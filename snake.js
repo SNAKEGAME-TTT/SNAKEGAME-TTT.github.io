@@ -1,13 +1,13 @@
-let GAME_SPEED =100;
+let GAME_SPEED =200;
 
     const CANVAS_BORDER_COLOUR = 'black';
-    const CANVAS_BACKGROUND_COLOUR = "lightgreen";
+    const CANVAS_BACKGROUND_COLOUR = "black";
    const SNAKE_COLOUR = 'darkblue'; 
    const SNAKE_COLOUR1 = 'yellow';
     const SNAKE_BORDER_COLOUR = 'darkgreen';
     const FOOD_COLOUR = 'red';
     const FOOD_BORDER_COLOUR = 'darkred';
-    var box=20;
+    var box=10;
     var username="";
 
     // load images
@@ -18,9 +18,9 @@ ground.src = "img/1.jfif";
 const foodImg = new Image();
 foodImg.src = "img/food.png";
 const snakehead_0 = new Image();
-snakehead_0.src = "img/snakehead.gif";
+snakehead_0.src = "img/hed.png";
 const snakehead_1 = new Image();
-snakehead_1.src = "img/snakehead1.gif";
+snakehead_1.src = "img/tail.png";
 
 
 // load audio files
@@ -46,12 +46,14 @@ alert1.src="audio/alert1.wav";
 alert2.src="audio/alert2.wav";
 
     let snake = [
-      {x: 240, y: 80},
-      {x: 220, y: 60},
-      {x: 200, y: 40},
-      {x: 180, y: 20},
+      {x: 240, y: 0},
+      {x: 220, y: 0},
+      {x: 200, y: 0},
+      {x: 180, y: 0},
       {x: 160, y: 0}
     ]
+
+
 
     // The user's score
     let score = 0;
@@ -72,8 +74,10 @@ alert2.src="audio/alert2.wav";
     
     // Get the canvas element
     const gameCanvas = document.getElementById("gameCanvas");
+    const touchsurface2 = document.getElementById("touchsurface2");
     // Return a two dimensional drawing context
     const ctx = gameCanvas.getContext("2d");
+    const ctx1 = touchsurface2.getContext("2d");
 
 
     function setCookie(cname,cvalue,exdays) {
@@ -132,8 +136,6 @@ alert2.src="audio/alert2.wav";
      output.innerHTML = slider.value;
      
      slider.oninput = function() {
-       
-       
        output.innerHTML = this.value;
        GAME_SPEED=400-(4*slider.value);
      }
@@ -145,16 +147,42 @@ alert2.src="audio/alert2.wav";
      slider1.oninput = function() {
        output1.innerHTML = this.value;
       if(slider1.value==1)
-      box=2;
+      {box=4;clearCanvas();
+        drawFood();}
       if(slider1.value==2)
-      box=4;
+      {box=8;clearCanvas();
+        drawFood();}
       if(slider1.value==3)
-      box=8;
+      {box=10;clearCanvas();
+        drawFood();}
       if(slider1.value==4)
-      box=10;
+      {box=20;clearCanvas();
+        drawFood();}
       if(slider1.value==5)
-      box=20;
+     {box=40;clearCanvas();
+      drawFood();}
      }
+
+     var slider2 = document.getElementById("myRange2");
+     var output2 = document.getElementById("demo2");
+     output2.innerHTML = slider2.value;
+     
+     slider2.oninput = function() {
+       output2.innerHTML = this.value;
+       gameCanvas.width=40*slider2.value;
+       touchsurface2.width=gameCanvas.width;
+     }
+     var slider3 = document.getElementById("myRange3");
+     var output3 = document.getElementById("demo3");
+     output3.innerHTML = slider3.value;
+     
+     slider3.oninput = function() {
+       output3.innerHTML = this.value;
+       gameCanvas.height=40*slider3.value;
+       touchsurface2.height=gameCanvas.height;
+     }
+
+    
 
 
 function ontouch(el, callback){
@@ -284,8 +312,20 @@ function main2(){
   const goingDown1 = dy === box;
   const goingRight1 = dx === box;
   const goingLeft1 = dx === -box;
-
-
+   
+  
+    /*for (let i = 4; i < snake.length; i++){
+      if((snake[0].x===foodX&&foodX===snake[i].x)||(snake[0].y===foodY&&foodY===snake[i].y)){
+        "audio/dead.mp3".play();
+        
+           
+      }*/
+     /* if(score>=25){
+         
+      }
+    else{*/
+ 
+  
   if(snake[0].y===foodY)
    {   
        if ( (snake[0].x > foodX)&& !goingRight1)
@@ -295,7 +335,7 @@ function main2(){
        }
 
        else if( (snake[0].x < foodX)&& !goingLeft1) {
-        
+
         dx = box;
         dy = 0;
        }
@@ -323,7 +363,7 @@ function main2(){
           if((snake[i].y-box === snake[0].y)&& goingDown1&&(snake[i].x === snake[0].x))
           {
             {
-            dx = box;
+            dx = -box;
             dy = 0;
             }
           }
@@ -357,7 +397,7 @@ function main2(){
           if((snake[i].x+box === snake[0].x)&& goingLeft1&&(snake[i].y === snake[0].y)){
             {
             dx = 0;
-            dy = box;
+            dy = -box;
             }
           }
          /* if((snake[i].x-box === snake[0].x)&& goingRight1){
@@ -369,35 +409,7 @@ function main2(){
 
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    
-    
     // Create the first food location
     createFood();
     // Call changeDirection whenever a key is pressed
@@ -496,6 +508,7 @@ function main2(){
         drawFood();
         advanceSnake();
         drawSnake();
+
         main2();
         
         // Call game again
@@ -560,6 +573,7 @@ function main2(){
      * according to the horizontal velocity and the y-coordinates of its parts
      * according to the vertical veolocity
      */
+      
     function advanceSnake() {
 
       const hitLeftWall = snake[0].x <=0;
@@ -589,8 +603,8 @@ function main2(){
         snake.pop();
       }
       if(hitRightWall){snake[0].x =box;}
-      if(hitLeftWall){snake[0].x = 480-box;}
-      if(hitToptWall){snake[0].y = 400-box;}
+      if(hitLeftWall){snake[0].x = gameCanvas.width-box;}
+      if(hitToptWall){snake[0].y = gameCanvas.height-box;}
       if(hitBottomWall){snake[0].y = box;}
 
     }
@@ -665,9 +679,9 @@ function main2(){
      */
     function createFood() {
       // Generate a random number the food x-coordinate
-      foodX = randomTen(40, gameCanvas.width - 40);
+      foodX = randomTen(2*box, gameCanvas.width - 2*box);
       // Generate a random number for the food y-coordinate
-      foodY = randomTen(40, gameCanvas.height - 40);
+      foodY = randomTen(2*box, gameCanvas.height - 2*box);
 
       // if the new food location is where the snake currently is, generate a new food location
       snake.forEach(function isFoodOnSnake(part) {
@@ -717,7 +731,4 @@ function main2(){
       // Draw a border around the snake part
       //ctx.strokeRect(snakePart.x, snakePart.y, box, box);
     }
-
-    
-
-
+  

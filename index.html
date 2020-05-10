@@ -11,6 +11,8 @@
     <link rel="stylesheet"  href="snake.css">
 
   </head>
+   
+  
 
   <body onload="checkCookie()">
     
@@ -121,24 +123,39 @@
     
     
   
-        <div class="ts" id="touchsurface2"></div>
+        <canvas class="ts" id="touchsurface2" width="480" height="400"></canvas>
        <div class="sco"><h4 style="color: white;">Game Speed controller</h4>
 
         <div class="slidecontainer">
-          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+          <input type="range" min="1" max="100"  class="slider" id="myRange">
           <p style="color: violet;"> <big>Speed:</big> <span id="demo"></span></p>
         </div></div>
 
         <div class="sco1"><h4 style="color: white;">Snake size controller</h4>
 
           <div class="slidecontainer1">
-            <input type="range" min="1" max="5" value1="4" class="slider1" id="myRange1">
+            <input type="range" min="1" max="5"  class="slider1" id="myRange1">
             <p style="color: violet;"> <big>Size:</big> <span id="demo1"></span></p>
           </div></div>
+
+          <div class="sco2"><h4 style="color: white;">Game width controller</h4>
+
+          <div class="slidecontainer2">
+            <input type="range" min="1" max="30"  class="slider2" id="myRange2">
+            <p style="color: violet;"> <big>Width:</big> <span id="demo2"></span></p>
+          </div></div>
+      
+          <div class="sco3"><h4 style="color: white;">Game height controller</h4>
+            <p onclick="main2()">Automate the game?</p>
+            <div class="slidecontainer3">
+              <input type="range" min="1" max="50"  class="slider3" id="myRange3">
+              <p style="color: violet;"> <big>Height:</big> <span id="demo3"></span></p>
+            </div></div>
+            
 
   </body>
   
 
   <script src="snake.js"></script>
-    
+  
 </html>
