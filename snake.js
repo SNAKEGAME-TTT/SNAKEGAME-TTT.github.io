@@ -1,7 +1,7 @@
 let GAME_SPEED =200;
 
     const CANVAS_BORDER_COLOUR = 'black';
-    const CANVAS_BACKGROUND_COLOUR = "black";
+    const CANVAS_BACKGROUND_COLOUR = "lightgreen";
    const SNAKE_COLOUR = 'darkblue'; 
    const SNAKE_COLOUR1 = 'yellow';
     const SNAKE_BORDER_COLOUR = 'darkgreen';
@@ -9,6 +9,9 @@ let GAME_SPEED =200;
     const FOOD_BORDER_COLOUR = 'darkred';
     var box=10;
     var username="";
+    var chk=0;
+
+
 
     // load images
 
@@ -41,7 +44,7 @@ up.src = "audio/up.mp3";
 right.src = "audio/right.mp3";
 left.src = "audio/left.mp3";
 down.src = "audio/down.mp3";
-bg1.src="audio/bg1.wav";
+bg1.src="audio/bg2.wav";
 alert1.src="audio/alert1.wav";
 alert2.src="audio/alert2.wav";
 
@@ -303,10 +306,12 @@ window.addEventListener('load', function(){
   })
 }, false)
 
+function myFunction1(){
+      chk=1;
+}
 
 
-
-function main2(){
+function myFunction(){
 
   const goingUp1 = dy === -box;
   const goingDown1 = dy === box;
@@ -406,7 +411,7 @@ function main2(){
           }*/
         }
       }
-
+   main3();
   }
 
    
@@ -499,7 +504,43 @@ function main2(){
 
         
         }
+       
+        document.getElementById("demo4").onclick = function() {myFunction1()};
+      setTimeout(function onTick() {
         
+        changingDirection = false ;
+        clearCanvas();
+        drawFood();
+        advanceSnake();
+        drawSnake();
+        if(chk===1){
+          myFunction();
+        }
+        
+        
+        // Call game again
+        main();
+      }, GAME_SPEED)
+    }
+    function main3() {
+      
+      bg1.play();
+
+      
+      
+     /*if( abouttoEndGamex()){
+       alert1.play();
+     }*/
+      // If the game ended return early to stop game
+      if (didGameEnd()){ 
+        alert1.play();
+        if(main1()){
+          return;
+        }
+
+        
+        }
+       
 
       setTimeout(function onTick() {
         
@@ -508,14 +549,13 @@ function main2(){
         drawFood();
         advanceSnake();
         drawSnake();
-
-        main2();
+       // document.getElementById("demo4").onclick = function() {myFunction()};
+       myFunction();
         
         // Call game again
-        main();
+        main3();
       }, GAME_SPEED)
     }
-
 
     function main1()
     {

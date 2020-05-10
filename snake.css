@@ -20,7 +20,7 @@ body{
     
     
     #gameCanvas {
-        border: 5px solid  #009BFF;
+        border: 5px solid  rgb(251, 255, 0);
         position: fixed;
     top: 54%;
     left: 50%;
