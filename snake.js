@@ -1,3 +1,11 @@
+// Get the canvas element
+const gameCanvas = document.getElementById("gameCanvas");
+const touchsurface2 = document.getElementById("touchsurface2");
+// Return a two dimensional drawing context
+const ctx = gameCanvas.getContext("2d");
+const ctx1 = touchsurface2.getContext("2d");
+
+
 let GAME_SPEED =200;
 
     const CANVAS_BORDER_COLOUR = 'black';
@@ -49,11 +57,11 @@ alert1.src="audio/alert1.wav";
 alert2.src="audio/alert2.wav";
 
     let snake = [
-      {x: 240, y: 0},
-      {x: 220, y: 0},
-      {x: 200, y: 0},
-      {x: 180, y: 0},
-      {x: 160, y: 0}
+      {x: gameCanvas.width/2, y: gameCanvas.height/2},
+      {x: gameCanvas.width/2-box, y: gameCanvas.height/2},
+      {x: gameCanvas.width/2-2*box, y: gameCanvas.height/2},
+      {x: gameCanvas.width/2-3*box, y: gameCanvas.height/2},
+      {x: gameCanvas.width/2-4*box, y: gameCanvas.height/2}
     ]
 
 
@@ -70,18 +78,13 @@ alert2.src="audio/alert2.wav";
     let dx = box;
     // Vertical velocity
     let dy = 0;
-
+    let mazeX;
+    let mazeY;
       
   
 
     
-    // Get the canvas element
-    const gameCanvas = document.getElementById("gameCanvas");
-    const touchsurface2 = document.getElementById("touchsurface2");
-    // Return a two dimensional drawing context
-    const ctx = gameCanvas.getContext("2d");
-    const ctx1 = touchsurface2.getContext("2d");
-
+    
 
     function setCookie(cname,cvalue,exdays) {
       var d = new Date();
@@ -305,9 +308,17 @@ window.addEventListener('load', function(){
 
   })
 }, false)
-
+var o1 = document.getElementById("demo4");
+var o2 = document.getElementById("demo5");
 function myFunction1(){
       chk=1;
+ o1.innerHTML = "is ON";
+ o2.innerHTML = "OFF?";
+}
+function myFunction2(){
+  chk=0;
+  o1.innerHTML = "ON?";
+  o2.innerHTML = "is OFF";
 }
 
 
@@ -411,7 +422,7 @@ function myFunction(){
           }*/
         }
       }
-   main3();
+   
   }
 
    
@@ -502,10 +513,11 @@ function myFunction(){
           return;
         }
 
-        
+        return;
         }
        
         document.getElementById("demo4").onclick = function() {myFunction1()};
+        document.getElementById("demo5").onclick = function() {myFunction2()};
       setTimeout(function onTick() {
         
         changingDirection = false ;
@@ -513,6 +525,7 @@ function myFunction(){
         drawFood();
         advanceSnake();
         drawSnake();
+        drawMaze();
         if(chk===1){
           myFunction();
         }
@@ -522,40 +535,7 @@ function myFunction(){
         main();
       }, GAME_SPEED)
     }
-    function main3() {
-      
-      bg1.play();
-
-      
-      
-     /*if( abouttoEndGamex()){
-       alert1.play();
-     }*/
-      // If the game ended return early to stop game
-      if (didGameEnd()){ 
-        alert1.play();
-        if(main1()){
-          return;
-        }
-
-        
-        }
-       
-
-      setTimeout(function onTick() {
-        
-        changingDirection = false ;
-        clearCanvas();
-        drawFood();
-        advanceSnake();
-        drawSnake();
-       // document.getElementById("demo4").onclick = function() {myFunction()};
-       myFunction();
-        
-        // Call game again
-        main3();
-      }, GAME_SPEED)
-    }
+    
 
     function main1()
     {
@@ -608,6 +588,10 @@ function myFunction(){
       //ctx.strokeRect(foodX, foodY, box, box);
     }
 
+    function drawMaze(){
+      ctx.drawImage(snakehead_0, mazeX, mazeY,3*box,3*box);
+    }
+
     /**
      * Advances the snake by changing the x-coordinates of its parts
      * according to the horizontal velocity and the y-coordinates of its parts
@@ -638,6 +622,7 @@ function myFunction(){
         
         // Generate new food location
         createFood();
+        createMaze();
       } else if(!didEatFood){
         // Remove the last part of snake body
         snake.pop();
@@ -719,15 +704,25 @@ function myFunction(){
      */
     function createFood() {
       // Generate a random number the food x-coordinate
-      foodX = randomTen(2*box, gameCanvas.width - 2*box);
+      foodX = randomTen(3*box, gameCanvas.width - 3*box);
       // Generate a random number for the food y-coordinate
-      foodY = randomTen(2*box, gameCanvas.height - 2*box);
+      foodY = randomTen(3*box, gameCanvas.height - 3*box);
 
       // if the new food location is where the snake currently is, generate a new food location
       snake.forEach(function isFoodOnSnake(part) {
         const foodIsoNsnake = part.x == foodX && part.y == foodY;
-        if (foodIsoNsnake) createFood();
+        if (foodIsoNsnake) {createFood();createMaze();}
       });
+    }
+    
+    
+    function createMaze(){
+      
+      mazeX = randomTen(3*box, gameCanvas.width - 3*box);
+      // Generate a random number for the food y-coordinate
+      mazeY = randomTen(3*box, gameCanvas.height - 3*box);
+
+
     }
 
     /**

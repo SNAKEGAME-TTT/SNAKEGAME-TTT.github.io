@@ -205,7 +205,7 @@ background: rgba(0, 0, 0, 0);
 #snr{
      width: 100%;
     z-index: -6;
-    animation: b2 9s linear infinite;
+    animation: b2 20s linear infinite;
 }
 
 @keyframes b2{
@@ -416,4 +416,24 @@ background: rgba(0, 0, 0, 0);
     border: 0;
     background: url('img/snake1.png');
     cursor: pointer;
+  }
+
+  .acg{
+    top: 0%;
+    position: fixed;
+    left: 50%;
+    z-index: 2000;
+  }
+
+  #demo4{
+    border: #ff0000;
+    background-color: blueviolet;
+    border-radius: 5%;
+    width: 30%;
+  }
+  #demo5{
+    border: #ff0000;
+    background-color: rgb(226, 43, 43);
+    border-radius: 5%;
+    width: 30%;
   }
