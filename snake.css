@@ -205,7 +205,7 @@ background: rgba(0, 0, 0, 0);
 #snr{
      width: 100%;
     z-index: -6;
-    animation: b2 20s linear infinite;
+    animation: b2 40s linear infinite;
 }
 
 @keyframes b2{

@@ -24,7 +24,7 @@ let GAME_SPEED =200;
     // load images
 
 const ground = new Image();
-ground.src = "img/1.jfif";
+ground.src = "img/bagr.jpeg";
 
 const foodImg = new Image();
 foodImg.src = "img/food.png";
@@ -144,6 +144,11 @@ alert2.src="audio/alert2.wav";
      slider.oninput = function() {
        output.innerHTML = this.value;
        GAME_SPEED=400-(4*slider.value);
+       
+       
+        
+        // Call game again
+      
      }
 
      var slider1 = document.getElementById("myRange1");
@@ -153,20 +158,20 @@ alert2.src="audio/alert2.wav";
      slider1.oninput = function() {
        output1.innerHTML = this.value;
       if(slider1.value==1)
-      {box=4;clearCanvas();
-        drawFood();}
+      {box=4;}
       if(slider1.value==2)
-      {box=8;clearCanvas();
-        drawFood();}
+      {box=8;}
       if(slider1.value==3)
-      {box=10;clearCanvas();
-        drawFood();}
+      {box=10;}
       if(slider1.value==4)
-      {box=20;clearCanvas();
-        drawFood();}
+      {box=20;}
       if(slider1.value==5)
-     {box=40;clearCanvas();
-      drawFood();}
+     {box=40;}
+      
+        
+      createFood();
+        // Call game again
+      
      }
 
      var slider2 = document.getElementById("myRange2");
@@ -177,6 +182,7 @@ alert2.src="audio/alert2.wav";
        output2.innerHTML = this.value;
        gameCanvas.width=40*slider2.value;
        touchsurface2.width=gameCanvas.width;
+       createFood();
      }
      var slider3 = document.getElementById("myRange3");
      var output3 = document.getElementById("demo3");
@@ -186,6 +192,11 @@ alert2.src="audio/alert2.wav";
        output3.innerHTML = this.value;
        gameCanvas.height=40*slider3.value;
        touchsurface2.height=gameCanvas.height;
+       
+       createFood();
+        
+        // Call game again
+      
      }
 
     
@@ -282,23 +293,23 @@ window.addEventListener('load', function(){
     const goingRight0 = dx === box;
     const goingLeft0 = dx === -box;
       
-      if ((dir=='up') && !goingDown0) {
+      if ((dir=='up') && !goingDown0&& !goingUp0) {
         up.play();
         dx = 0;
         dy = -box;
       }
 
-      if ((dir=='left') && !goingRight0) {
+      if ((dir=='left') && !goingRight0&& !goingLeft0) {
         left.play();
         dx = -box;
         dy = 0;
       }
-      if ((dir=='right') && !goingLeft0) {
+      if ((dir=='right') && !goingLeft0&& !goingRight0) {
         right.play();
         dx = box;
         dy = 0;
       }
-      if ((dir=='down') && !goingUp0) {
+      if ((dir=='down') && !goingUp0&& !goingDown0) {
         down.play();
         dx = 0;
         dy = box;
@@ -312,13 +323,17 @@ var o1 = document.getElementById("demo4");
 var o2 = document.getElementById("demo5");
 function myFunction1(){
       chk=1;
- o1.innerHTML = "is ON";
- o2.innerHTML = "OFF?";
+ o1.innerHTML = "ON ✔";
+ o2.innerHTML = "OFF";
+ GAME_SPEED=0;
+ slider.value=100;
 }
 function myFunction2(){
   chk=0;
-  o1.innerHTML = "ON?";
-  o2.innerHTML = "is OFF";
+  o1.innerHTML = "ON";
+  o2.innerHTML = "OFF✔";
+  GAME_SPEED=200;
+  slider.value=50;
 }
 
 
@@ -342,35 +357,8 @@ function myFunction(){
     else{*/
  
   
-  if(snake[0].y===foodY)
-   {   
-       if ( (snake[0].x > foodX)&& !goingRight1)
-       {
-        dx = -box;
-        dy = 0;
-       }
+  
 
-       else if( (snake[0].x < foodX)&& !goingLeft1) {
-
-        dx = box;
-        dy = 0;
-       }
-    }
-
-    else if(snake[0].x===foodX)
-    { 
-      if ((snake[0].y > foodY)&& !goingDown1) {
-        
-        dx = 0;
-        dy = -box;
-      }
-      
-      else if((snake[0].y < foodY)&& !goingUp1) {
-        
-        dx = 0;
-        dy = box;
-      }
-    }
     for (let i = 4; i < snake.length; i++)
       {
         if ( ( (snake[i].x-box === snake[0].x)||(snake[i].x+box === snake[0].x)||(snake[i].x === snake[0].x) )&&( (snake[i].y-box === snake[0].y)||(snake[i].y+box === snake[0].y)||(snake[i].y === snake[0].y) ) )
@@ -421,6 +409,42 @@ function myFunction(){
             dy = -box;
           }*/
         }
+        else /*if(foodX===snake[0].x&&foodY===snake[0].y/*&&!(          ( ((snake[0].x==snake[i].x+box)||(snake[0].x==snake[i].x-box))&&((snake[1].x==snake[i-1].x+box)||(snake[1].x==snake[i-1].x-box)||(snake[1].x==snake[i+1].x+box)||(snake[1].x==snake[i+1].x-box)) ) ||     ( ((snake[0].y==snake[i].y+box)||(snake[0].y==snake[i].y-box))&&((snake[1].y==snake[i-1].y+box)||(snake[1].y==snake[i-1].y-box)||(snake[1].y==snake[i+1].y+box)||(snake[1].y==snake[i+1].y-box)) )     )               )*/{
+          if(snake[0].y===foodY)
+          {   
+              if ( (snake[0].x > foodX)&& !goingRight1&&!goingLeft1)
+              {alert2.play();
+               dx = -box;
+               dy = 0;
+               continue;
+              }
+       
+              else if( (snake[0].x < foodX)&& !goingLeft1&&!goingRight1) {
+                alert2.play();
+               dx = box;
+               dy = 0;continue;
+              }
+           }
+       
+           else if(snake[0].x===foodX)
+           { 
+             if ((snake[0].y > foodY)&& !goingDown1&&!goingUp1) {
+              
+              alert2.play();
+               dx = 0;
+               dy = -box;continue;
+             }
+             
+             else if((snake[0].y < foodY)&& !goingUp1&&!goingDown1) {
+               
+              alert2.play();
+               dx = 0;
+               dy = box;continue;
+             }
+           }
+       
+       
+        }
       }
    
   }
@@ -428,6 +452,7 @@ function myFunction(){
    
     // Create the first food location
     createFood();
+    createMaze();
     // Call changeDirection whenever a key is pressed
     document.addEventListener("keydown", changeDirection);
    
@@ -462,23 +487,23 @@ function myFunction(){
       
      
 
-      if (((keyPressed === LEFT_KEY)||(keyPressed === 65)/*||(dir=='left')*/) && !goingRight) {
+      if (((keyPressed === LEFT_KEY)||(keyPressed === 65)) && !goingRight&& !goingLeft) {
         left.play();
         dx = -box;
         dy = 0;
 
       }
-      if (((keyPressed === UP_KEY)||(keyPressed === 87)/*||(dir=='up')*/) && !goingDown) {
+      if (((keyPressed === UP_KEY)||(keyPressed === 87)) && !goingDown&& !goingUp) {
         up.play();
         dx = 0;
         dy = -box;
       }
-      if (((keyPressed === RIGHT_KEY)||(keyPressed === 68)/*||(dir=='right')*/) && !goingLeft) {
+      if (((keyPressed === RIGHT_KEY)||(keyPressed === 68)) && !goingLeft&& !goingRight) {
         right.play();
         dx = box;
         dy = 0;
       }
-      if (((keyPressed === DOWN_KEY)||(keyPressed === 83)/*||(dir=='down')*/) && !goingUp) {
+      if (((keyPressed === DOWN_KEY)||(keyPressed === 83)) && !goingUp&& !goingDown) {
         down.play();
         dx = 0;
         dy = box;
@@ -525,7 +550,7 @@ function myFunction(){
         drawFood();
         advanceSnake();
         drawSnake();
-        drawMaze();
+       // drawMaze();
         if(chk===1){
           myFunction();
         }
@@ -533,7 +558,7 @@ function myFunction(){
         
         // Call game again
         main();
-      }, GAME_SPEED)
+      },GAME_SPEED)
     }
     
 
@@ -565,6 +590,10 @@ function myFunction(){
      * draw a border around it
      */
     function clearCanvas() {
+      if(chk===1)
+      ctx.drawImage(ground, 0, 0,gameCanvas.width,gameCanvas.height);
+      else
+      {
       //  Select the colour to fill the drawing
       ctx.fillStyle = CANVAS_BACKGROUND_COLOUR;
       //  Select the colour for the border of the canvas
@@ -573,7 +602,8 @@ function myFunction(){
       // Draw a "filled" rectangle to cover the entire canvas
       ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
       // Draw a "border" around the entire canvas
-      ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+     ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+      }
     }
 
     /**
