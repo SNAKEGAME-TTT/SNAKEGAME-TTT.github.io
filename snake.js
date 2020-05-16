@@ -6,8 +6,9 @@ const ctx = gameCanvas.getContext("2d");
 const ctx1 = touchsurface2.getContext("2d");
 
 
-let GAME_SPEED =200;
 
+let GAME_SPEED =200;
+var gs=0;
     const CANVAS_BORDER_COLOUR = 'black';
     const CANVAS_BACKGROUND_COLOUR = "lightgreen";
    const SNAKE_COLOUR = 'darkblue'; 
@@ -25,6 +26,21 @@ let GAME_SPEED =200;
 
 const ground = new Image();
 ground.src = "img/bagr.jpeg";
+const canb0 = new Image();
+canb0.src = "img/b0.jpg";
+const canb1 = new Image();
+canb1.src = "img/b1.jpg";
+const canb2 = new Image();
+canb2.src = "img/b2.jpg";
+const canb3 = new Image();
+canb3.src = "img/b3.jpg";
+const canb4 = new Image();
+canb4.src = "img/b4.jpg";
+const canb5 = new Image();
+canb5.src = "img/b5.jpg";
+const canb6 = new Image();
+canb6.src = "img/b6.jpg";
+
 
 const foodImg = new Image();
 foodImg.src = "img/food.png";
@@ -32,6 +48,11 @@ const snakehead_0 = new Image();
 snakehead_0.src = "img/hed.png";
 const snakehead_1 = new Image();
 snakehead_1.src = "img/tail.png";
+
+
+
+/*const canb1 = new VideoTrack();
+canb1.src = "video/v0.mp4";*/
 
 
 // load audio files
@@ -45,6 +66,10 @@ let down = new Audio();
 let bg1=new Audio();
 let alert1=new Audio();
 let alert2=new Audio();
+let endplay=new Audio();
+let bga=new Audio();
+let bgn1=new Audio();
+
 
 dead.src = "audio/dead.mp3";
 eat.src = "audio/eat.mp3";
@@ -55,6 +80,9 @@ down.src = "audio/down.mp3";
 bg1.src="audio/bg2.wav";
 alert1.src="audio/alert1.wav";
 alert2.src="audio/alert2.wav";
+endplay.src="audio/end play.mp3";
+bga.src="audio/bga.mp3";
+bgn1.src="audio/bgn1.mp3";
 
     let snake = [
       {x: gameCanvas.width/2, y: gameCanvas.height/2},
@@ -135,7 +163,30 @@ alert2.src="audio/alert2.wav";
 
 
      //Start game
-    
+     var elem = document.getElementById("html");
+     function openFullscreen() {
+       if (elem.requestFullscreen) {
+         elem.requestFullscreen();
+       } else if (elem.mozRequestFullScreen) { /* Firefox */
+         elem.mozRequestFullScreen();
+       } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+         elem.webkitRequestFullscreen();
+       } else if (elem.msRequestFullscreen) { /* IE/Edge */
+         elem.msRequestFullscreen();
+       }
+     }
+
+     function closeFullscreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
      
      var slider = document.getElementById("myRange");
      var output = document.getElementById("demo");
@@ -168,8 +219,9 @@ alert2.src="audio/alert2.wav";
       if(slider1.value==5)
      {box=40;}
       
-        
+     
       createFood();
+      
         // Call game again
       
      }
@@ -183,6 +235,7 @@ alert2.src="audio/alert2.wav";
        gameCanvas.width=40*slider2.value;
        touchsurface2.width=gameCanvas.width;
        createFood();
+       
      }
      var slider3 = document.getElementById("myRange3");
      var output3 = document.getElementById("demo3");
@@ -194,7 +247,7 @@ alert2.src="audio/alert2.wav";
        touchsurface2.height=gameCanvas.height;
        
        createFood();
-        
+       
         // Call game again
       
      }
@@ -323,17 +376,23 @@ var o1 = document.getElementById("demo4");
 var o2 = document.getElementById("demo5");
 function myFunction1(){
       chk=1;
+      
  o1.innerHTML = "ON ✔";
  o2.innerHTML = "OFF";
  GAME_SPEED=0;
  slider.value=100;
+ output.innerHTML = slider.value;
+ output.innerHTML = this.value;
 }
 function myFunction2(){
   chk=0;
+  
   o1.innerHTML = "ON";
   o2.innerHTML = "OFF✔";
   GAME_SPEED=200;
   slider.value=50;
+  output.innerHTML = slider.value;
+  output.innerHTML = this.value;
 }
 
 
@@ -344,21 +403,6 @@ function myFunction(){
   const goingRight1 = dx === box;
   const goingLeft1 = dx === -box;
    
-  
-    /*for (let i = 4; i < snake.length; i++){
-      if((snake[0].x===foodX&&foodX===snake[i].x)||(snake[0].y===foodY&&foodY===snake[i].y)){
-        "audio/dead.mp3".play();
-        
-           
-      }*/
-     /* if(score>=25){
-         
-      }
-    else{*/
- 
-  
-  
-
     for (let i = 4; i < snake.length; i++)
       {
         if ( ( (snake[i].x-box === snake[0].x)||(snake[i].x+box === snake[0].x)||(snake[i].x === snake[0].x) )&&( (snake[i].y-box === snake[0].y)||(snake[i].y+box === snake[0].y)||(snake[i].y === snake[0].y) ) )
@@ -371,11 +415,7 @@ function myFunction(){
             dy = 0;
             }
           }
-         /* if((snake[i].y-box === snake[0].y)&& goingUp1)
-          {
-            dx = -box;
-            dy = 0;
-          }*/
+         
           if((snake[i].y+box === snake[0].y)&& goingUp1&&(snake[i].x === snake[0].x))
           {
             {
@@ -383,31 +423,21 @@ function myFunction(){
             dy = 0;
             }
           }
-         /* if((snake[i].y+box === snake[0].y)&& goingDown1)
-          {
-            dx = box;
-            dy = 0;
-          }*/
+         
           if((snake[i].x-box === snake[0].x)&& goingRight1&&(snake[i].y === snake[0].y)){      
             {
             dx = 0;
             dy = box;
             }
           }
-         /* if((snake[i].x+box === snake[0].x)&& goingleft1){      
-            dx = 0;
-            dy = box;
-          }*/
+         
           if((snake[i].x+box === snake[0].x)&& goingLeft1&&(snake[i].y === snake[0].y)){
             {
             dx = 0;
             dy = -box;
             }
           }
-         /* if((snake[i].x-box === snake[0].x)&& goingRight1){
-            dx = 0;
-            dy = -box;
-          }*/
+         
         }
         else /*if(foodX===snake[0].x&&foodY===snake[0].y/*&&!(          ( ((snake[0].x==snake[i].x+box)||(snake[0].x==snake[i].x-box))&&((snake[1].x==snake[i-1].x+box)||(snake[1].x==snake[i-1].x-box)||(snake[1].x==snake[i+1].x+box)||(snake[1].x==snake[i+1].x-box)) ) ||     ( ((snake[0].y==snake[i].y+box)||(snake[0].y==snake[i].y-box))&&((snake[1].y==snake[i-1].y+box)||(snake[1].y==snake[i-1].y-box)||(snake[1].y==snake[i+1].y+box)||(snake[1].y==snake[i+1].y-box)) )     )               )*/{
           if(snake[0].y===foodY)
@@ -521,10 +551,26 @@ function myFunction(){
      // const hitRightWall = snake[0].x >= gameCanvas.width ;
       //const hitToptWall = snake[0].y <=-2;
      // const hitBottomWall = snake[0].y >= gameCanvas.height ;
+     function onTick() {
+        
+      changingDirection = false ;
+      clearCanvas();
+      drawFood();
+      advanceSnake();
+      drawSnake();
+     // drawMaze();
+      if(chk===1){
+        myFunction();
+      }
+      gs=GAME_SPEED;
+      // Call game again
+      main();
+    }
 
+    
     function main() {
       
-      bg1.play();
+     
 
       
       
@@ -535,41 +581,38 @@ function myFunction(){
       if (didGameEnd()){ 
         alert1.play();
         if(main1()){
-          return;
+          main6();       
+        }     
         }
-
-        return;
+        if(chk===1)
+        {
+          endplay.pause();
+          bga.play();
+          bgn1.pause();
+        }
+        if(chk===0)
+        {
+          endplay.pause();
+          bga.pause();
+          bgn1.play();
         }
        
         document.getElementById("demo4").onclick = function() {myFunction1()};
         document.getElementById("demo5").onclick = function() {myFunction2()};
-      setTimeout(function onTick() {
-        
-        changingDirection = false ;
-        clearCanvas();
-        drawFood();
-        advanceSnake();
-        drawSnake();
-       // drawMaze();
-        if(chk===1){
-          myFunction();
-        }
-        
-        
-        // Call game again
-        main();
-      },GAME_SPEED)
+
+        document.getElementById("demo6").onclick = function() {main4()};
+        document.getElementById("demo7").onclick = function() {main5()};
+      setTimeout(onTick,GAME_SPEED);
     }
     
 
     function main1()
     {
       
-      if(score>=100)
-        alert("This is truly above and beyond.😍😎 "+username);
-
+          if(score>=100)
+          alert("This is truly above and beyond.😍😎 "+username);
           else if(score>=80)
-           alert("You set a high bar with this one.😎 "+username);
+          alert("You set a high bar with this one.😎 "+username);
           else if(score>=50)
           alert("BRILLIANT gameplay!☺😊☺ "+username);
           else if(score>=25)
@@ -584,6 +627,36 @@ function myFunction(){
         return true;
           
     }
+      
+       var c0=0;
+       function main4(){
+         GAME_SPEED=100;
+         if(c0===0)
+         {
+           main();
+           c0=1
+         }
+       
+     }
+     function main5(){       
+      endplay.play();
+      bga.pause();
+      bgn1.pause();
+       GAME_SPEED=9000000;
+       c0=0; 
+   }
+   function myppop() {
+    var popup = document.getElementById("demo7");
+    popup.classList.toggle("show");
+  }
+
+    function main6(){
+      endplay.play();
+      bga.pause();
+      bgn1.pause();
+       main6();
+    }
+
 
     /**
      * Change the background colour of the canvas to CANVAS_BACKGROUND_COLOUR and
@@ -592,9 +665,15 @@ function myFunction(){
     function clearCanvas() {
       if(chk===1)
       ctx.drawImage(ground, 0, 0,gameCanvas.width,gameCanvas.height);
-      else
+      if(score>65)
+      ctx.drawImage(canb6, 0, 0,gameCanvas.width,gameCanvas.height);
+      else if(score>50)
+      ctx.drawImage(canb4, 0, 0,gameCanvas.width,gameCanvas.height);
+
+      else if(score>40)
       {
-      //  Select the colour to fill the drawing
+        ctx.drawImage(canb5, 0, 0,gameCanvas.width,gameCanvas.height);
+      /*//  Select the colour to fill the drawing
       ctx.fillStyle = CANVAS_BACKGROUND_COLOUR;
       //  Select the colour for the border of the canvas
       ctx.strokestyle = CANVAS_BORDER_COLOUR;
@@ -602,8 +681,18 @@ function myFunction(){
       // Draw a "filled" rectangle to cover the entire canvas
       ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
       // Draw a "border" around the entire canvas
-     ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+     ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);*/
       }
+      else if(score>30)
+        ctx.drawImage(canb3, 0, 0,gameCanvas.width,gameCanvas.height);
+        else if(score>15)
+        ctx.drawImage(canb2, 0, 0,gameCanvas.width,gameCanvas.height);
+        else if(score>5)
+        ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
+        else
+        ctx.drawImage(canb0, 0, 0,gameCanvas.width,gameCanvas.height);
+
+
     }
 
     /**

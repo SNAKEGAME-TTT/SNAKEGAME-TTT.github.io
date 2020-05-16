@@ -1,13 +1,17 @@
 
 html{
+  
     cursor: url(http://cur.cursors-4u.net/nature/nat-1/nat43.ani), url(http://cur.cursors-4u.net/nature/nat-1/nat43.png), auto !important;
 }
 
 body{
-    background-color: #1d202c;
-    
+    background: url(img/bgs.gif);
+    background-size: 50px;
+    orientation: landscape;
     align-items: center;
     justify-content: center;
+    
+    
 }
 
 .fix{
@@ -22,7 +26,7 @@ body{
     #gameCanvas {
         border: 5px solid  rgb(251, 255, 0);
         position: fixed;
-    top: 54%;
+    top: 59%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -30,19 +34,19 @@ body{
     
   }
   
-.canva:after{
+/*.canva:after{
      position: absolute;
      content: '';
      top: 0%;
      left: 0;
      right: 0;
-     z-index: -1;
+     z-index: -1000000000000;
      height: 150%; 
      width: 200%; 
      margin: 0 auto;
      filter: blur(40px); 
      transform: scale(1.3);
-     background: linear-gradient(90deg,rgb(130, 137, 238),rgb(0, 204, 255),orange); 
+     background: linear-gradient(90deg,rgb(130, 137, 238),rgb(0, 204, 255),orange);
      background-size: 20% 20%;
     
      animation: animateglow 3s linear infinite;
@@ -60,7 +64,7 @@ body{
     100%{
         background-position: 100% 0%;
     }
-}
+}*/
 
  .s{
        position: fixed;
@@ -82,7 +86,7 @@ body{
 
 
 ul{
-    top: 1.0rem;
+    top: 0.9rem;
     left: 10rem;
     position: fixed ;
     display: flex;
@@ -189,7 +193,7 @@ ul li:nth-child(1):hover span{
 #touchsurface2{
     
     position: fixed;
-top: 54%;
+top: 59%;
 left: 50%;
 transform: translate(-50%, -50%);
 
@@ -203,7 +207,7 @@ background: rgba(0, 0, 0, 0);
 
 
 #snr{
-     width: 100%;
+     width: 10%;
     z-index: -6;
     animation: b2 40s linear infinite;
 }
@@ -263,23 +267,23 @@ background: rgba(0, 0, 0, 0);
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 23px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     border: 0;
     background: url('img/food.png');
     cursor: pointer;
   }
   
-  .slider::-moz-range-thumb {
+ /* .slider::-moz-range-thumb {
     width: 23px;
     height: 24px;
     border: 0;
     background: url('img/food.png');
     cursor: pointer;
-  }
+  }*/
 
   .sco1{
-    top: 68%;
+    top: 78%;
     position: fixed;
     right: 1%;
 
@@ -311,20 +315,20 @@ background: rgba(0, 0, 0, 0);
   .slider1::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 23px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     border: 0;
-    background: url('img/snake1.png');
+    background: url('img/snake3.png');
     cursor: pointer;
   }
   
-  .slider1::-moz-range-thumb {
+  /*.slider1::-moz-range-thumb {
     width: 23px;
     height: 24px;
     border: 0;
-    background: url('img/snake1.png');
+    background: url('img/ssn.png');
     cursor: pointer;
-  }
+  }*/
 
   .sco2{
     top: 38%;
@@ -373,7 +377,7 @@ background: rgba(0, 0, 0, 0);
   }
 
   .sco3{
-    top: 68%;
+    top: 78%;
     position: fixed;
     left: 1%;
     z-index: 2000;
@@ -419,9 +423,22 @@ background: rgba(0, 0, 0, 0);
   }
 
   .acg{
-    top: 0%;
+    top: 9rem;
+    position: fixed;
+    left: 30%;
+    z-index: 2000;
+  }
+
+  .g{
+    top: 3rem;
     position: fixed;
     left: 50%;
+    z-index: 2000;
+  }
+  .fs{
+    top: 9rem;
+    position: fixed;
+    right: 0%;
     z-index: 2000;
   }
 
@@ -436,4 +453,32 @@ background: rgba(0, 0, 0, 0);
     background-color: rgb(226, 43, 43);
     border-radius: 5%;
     width: 30%;
+  }
+  #demo6{
+    border: #26ff00;
+    background-color: rgb(86, 226, 43);
+    border-radius: 5%;
+    width: 30%;
+  }
+  #demo7{
+    border: #ff0000;
+    
+    border-radius: 5%;
+    width: 30%;
+  }
+  .tooltiptext {
+    visibility: hidden;
+   
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    
+    
+  }
+  
+  #demo7:hover .tooltiptext {
+    visibility: visible;
+    
   }

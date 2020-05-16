@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="html">
   <head>
   	<title>Snake Game</title>
     <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
@@ -9,17 +9,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet"  href="snake.css">
-
   </head>
-   
-  
-
-  <body onload="checkCookie()">
+  <body onload="checkCookie()" id="body">
     
-
-
-
-    <p class="s">SCORE:</p>
+  <p class="s">SCORE:</p>
     <div id="score">0</div>
     <ul>
       <li>
@@ -46,21 +39,21 @@
              <span></span>
              <span></span>
              <span><i class="fas fa-gamepad"><br><small><small><small>new</small></small></small></i></span>
-          </a>
-          
+          </a>         
       </li> 
+      <li>
+        <a href="index.html">
+           <span></span>
+           <span></span>
+           <span></span>
+           <span></span>
+           <span><i class="fas fa-gamepad"><br><small><small><small>new</small></small></small></i></span>
+        </a>         
+    </li> 
   </ul>
    
   <img class="si" src="img/snakehead.gif" alt="">
   <img class="si1" src="img/snakehead1.gif" alt="">
-  
-  
-
-
-  
-    
-    
-       
       
     <div class="canva"></div>
       
@@ -96,13 +89,24 @@
               <input type="range" min="1" max="56"  class="slider3" id="myRange3">
               <p style="color: violet;"> <big>Height:</big> <span id="demo3"></span></p>
             </div></div>
+            <div class="g">
+              <h4 style="color: white;">Gameplay:  <span id="demo6" style="cursor: pointer;">Play▶</span>
+                <span  id="demo7"style="cursor: pointer;"><b style="background-color:yellowgreen ;">Pause <b><b>||</b></b></b> <br><b style="visibility: hidden;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b><span class="tooltiptext">Double click to pause current music also!</span></span></h4>
+                
+              
+            </div>
 
             <div class="acg">
-              <h4 style="color: white;">Automated/computerized Gameplay</h4>
-              <p id="demo4">ON</p>
-              <p id="demo5">OFF✔</p>
+              <h4 style="color: white;">Automated/computerized Gameplay:  <span id="demo4" style="cursor: pointer;">ON</span>
+                <span id="demo5"style="cursor: pointer;">OFF✔</span></h4>
+              
             </div>
             
+            <h4 class="fs" style="color: aliceblue;">FULLSCREEN:<button onclick="openFullscreen();" style="background-color: burlywood;"><span style="color: white;"> <small> OPEN </small></span></button><button onclick="closeFullscreen();" style="background-color: cyan;"><span style="color: white;"><small> CLOSE </small></span></button></h4>
+            
+            <video id="video1" height="0"  width="0" autoplay loop muted>
+              <source src="video/v0.mp4" type='video/mp4'>
+             </video>
 
   </body>
   
