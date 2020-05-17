@@ -7,7 +7,7 @@ const ctx1 = touchsurface2.getContext("2d");
 
 
 
-let GAME_SPEED =200;
+let GAME_SPEED =100;
 var gs=0;
     const CANVAS_BORDER_COLOUR = 'black';
     const CANVAS_BACKGROUND_COLOUR = "lightgreen";
@@ -25,12 +25,12 @@ var gs=0;
    }
     else if(screen.width<screen.height)
     {
-    gameCanvas.width=(Math.ceil((screen.width-((0.2/100)*screen.width))/40))*40;
-    gameCanvas.height=Math.ceil((screen.height-((0.1/100)*screen.height))/40)*40;
+    gameCanvas.width=(Math.ceil((screen.width)/40))*40+160;
+    gameCanvas.height=(Math.ceil((screen.height)/40))*40+320;
     }
     else{
-      gameCanvas.width=(Math.ceil((screen.width-((28/100)*screen.width))/40))*40;
-    gameCanvas.height=Math.ceil((screen.height-((30/100)*screen.height))/40)*40;
+      gameCanvas.width=(Math.ceil((screen.width-((28/100)*screen.width))/40))*40+40;
+    gameCanvas.height=(Math.ceil((screen.height-((30/100)*screen.height))/40))*40+40;
     }
 
     // load images
