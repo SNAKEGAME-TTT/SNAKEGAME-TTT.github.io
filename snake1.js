@@ -32,7 +32,9 @@ var gs=0;
       gameCanvas.width=(Math.ceil((screen.width-((28/100)*screen.width))/40))*40+40;
     gameCanvas.height=(Math.ceil((screen.height-((30/100)*screen.height))/40))*40+40;
     }
-
+        
+    touchsurface2.width=gameCanvas.width;
+    touchsurface2.height=gameCanvas.height;
     // load images
 
 const ground = new Image();

@@ -33,6 +33,9 @@ var gs=0;
     gameCanvas.height=(Math.ceil((screen.height-((30/100)*screen.height))/40))*40+40;
     }
 
+    touchsurface2.width=gameCanvas.width;
+    touchsurface2.height=gameCanvas.height;
+
     // load images
 
 const ground = new Image();
@@ -687,15 +690,7 @@ function myFunction(){
       else if(score>40)
       {
         ctx.drawImage(canb5, 0, 0,gameCanvas.width,gameCanvas.height);
-      /*//  Select the colour to fill the drawing
-      ctx.fillStyle = CANVAS_BACKGROUND_COLOUR;
-      //  Select the colour for the border of the canvas
-      ctx.strokestyle = CANVAS_BORDER_COLOUR;
-
-      // Draw a "filled" rectangle to cover the entire canvas
-      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
-      // Draw a "border" around the entire canvas
-     ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);*/
+      
       }
       else if(score>30)
         ctx.drawImage(canb3, 0, 0,gameCanvas.width,gameCanvas.height);
@@ -703,11 +698,29 @@ function myFunction(){
         ctx.drawImage(canb2, 0, 0,gameCanvas.width,gameCanvas.height);
         else if(score>5)
         ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
-        else
+        else if(score>75)
         ctx.drawImage(canb0, 0, 0,gameCanvas.width,gameCanvas.height);
+        else if(score>85)
+        ctx.drawImage(canb4, 0, 0,gameCanvas.width,gameCanvas.height);
+  
+        else if(score>95)
+        {
+          ctx.drawImage(canb5, 0, 0,gameCanvas.width,gameCanvas.height);
+        
+        }
+        else if(score>100)
+          ctx.drawImage(canb3, 0, 0,gameCanvas.width,gameCanvas.height);
+          else if(score>111)
+          ctx.drawImage(canb2, 0, 0,gameCanvas.width,gameCanvas.height);
+          else if(score>130)
+          ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
+          else
+          ctx.drawImage(canb0, 0, 0,gameCanvas.width,gameCanvas.height);
+  
 
 
     }
+
 
     /**
      * Draw the food on the canvas
