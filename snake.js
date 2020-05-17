@@ -19,8 +19,19 @@ var gs=0;
     var box=10;
     var username="";
     var chk=0;
-    gameCanvas.width=(Math.ceil((screen.width-((28/100)*screen.width))/40))*40;
+    if(screen.width>1000)
+   { gameCanvas.width=(Math.ceil((screen.width-((28/100)*screen.width))/40))*40;
     gameCanvas.height=Math.ceil((screen.height-((30/100)*screen.height))/40)*40;
+   }
+    else if(screen.width<screen.height)
+    {
+    gameCanvas.width=(Math.ceil((screen.width-((0.2/100)*screen.width))/40))*40;
+    gameCanvas.height=Math.ceil((screen.height-((0.1/100)*screen.height))/40)*40;
+    }
+    else{
+      gameCanvas.width=(Math.ceil((screen.width-((28/100)*screen.width))/40))*40;
+    gameCanvas.height=Math.ceil((screen.height-((30/100)*screen.height))/40)*40;
+    }
 
     // load images
 
@@ -165,6 +176,8 @@ bgn1.src="audio/bgn1.mp3";
      //Start game
      var elem = document.getElementById("html");
      function openFullscreen() {
+       if(screen.width>1000)
+       {
        if (elem.requestFullscreen) {
          elem.requestFullscreen();
        } else if (elem.mozRequestFullScreen) { /* Firefox */
@@ -174,6 +187,7 @@ bgn1.src="audio/bgn1.mp3";
        } else if (elem.msRequestFullscreen) { /* IE/Edge */
          elem.msRequestFullscreen();
        }
+      }
      }
 
      function closeFullscreen() {
@@ -570,8 +584,8 @@ function myFunction(){
     
     function main() {
       
-     
-
+       if(screen.width>1000)
+      openFullscreen();
       
       
      /*if( abouttoEndGamex()){
