@@ -144,6 +144,8 @@ bgn1.src="audio/bgn1.mp3";
       var myWindow = window.open("", "", "width=400,height=400");
       myWindow.document.write("<p>A new window!</p>");
       myWindow.focus();
+      GAME_SPEED=90000000;
+      c0=0;
     }
 
     /**

@@ -129,6 +129,8 @@ bgn1.src="audio/bgn1.mp3";
       var myWindow = window.open("", "", "width=400,height=400");
       myWindow.document.write("<p>A new window!</p>");
       myWindow.focus();
+      GAME_SPEED=90000000;
+      c0=0;
     }
     
     
@@ -666,7 +668,11 @@ function myFunction(){
       
        var c0=0;
        function main4(){
-         GAME_SPEED=400-(4*slider.value);
+         if(slider.value<=100){
+         GAME_SPEED=400-(4*slider.value);}
+         else{
+           GAME_SPEED=0;
+         }
          if(c0===0)
          {
            main();
