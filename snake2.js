@@ -7,7 +7,7 @@ const ctx1 = touchsurface2.getContext("2d");
 
 
 
-let GAME_SPEED =100;
+let GAME_SPEED =200;
 var gs=0;
     const CANVAS_BORDER_COLOUR = 'black';
     const CANVAS_BACKGROUND_COLOUR = "lightgreen";
@@ -16,7 +16,7 @@ var gs=0;
     const SNAKE_BORDER_COLOUR = 'darkgreen';
     const FOOD_COLOUR = 'red';
     const FOOD_BORDER_COLOUR = 'darkred';
-    var box=10;
+    var box=20;
     var username="";
     var chk=0;
     if(screen.width>1000)
@@ -62,6 +62,10 @@ const snakehead_0 = new Image();
 snakehead_0.src = "img/hed.png";
 const snakehead_1 = new Image();
 snakehead_1.src = "img/tail.png";
+const snaketail = new Image();
+snaketail.src = "img/tail1.png";
+const maze = new Image();
+maze.src = "img/maze.jpg";
 
 
 
@@ -99,11 +103,11 @@ bga.src="audio/bga.mp3";
 bgn1.src="audio/bgn1.mp3";
 
     let snake = [
-      {x: gameCanvas.width/2, y: gameCanvas.height/2},
-      {x: gameCanvas.width/2-box, y: gameCanvas.height/2},
-      {x: gameCanvas.width/2-2*box, y: gameCanvas.height/2},
-      {x: gameCanvas.width/2-3*box, y: gameCanvas.height/2},
-      {x: gameCanvas.width/2-4*box, y: gameCanvas.height/2}
+      {x: 0, y: box},
+      {x:-box, y: box},
+      {x:-2*box, y:box},
+      {x:-3*box, y:box},
+      {x:-4*box, y:box}
     ]
 
 
@@ -122,8 +126,113 @@ bgn1.src="audio/bgn1.mp3";
     let dy = 0;
     let mazeX;
     let mazeY;
-      
-  
+    let maze1X;
+    let maze1Y;
+    let maze2X;
+    let maze2Y;
+    let maze3X;
+    let maze3Y;
+
+
+    /**
+     * Generates a random number that is a multiple of box given a minumum
+     * and a maximum number
+     * @param { number } min - The minimum number the random number can be
+     * @param { number } max - The maximum number the random number can be
+     */
+    function randomTen(min, max) {
+      return Math.round((Math.random() * (max-min) + min) / box) * box;
+    }
+    function random1(min, max) {
+      return Math.round((Math.random() * (max-min) + min) / box) * box;
+    }
+  createMaze1();    
+  createMaze();
+  createMaze2();
+  createMaze3();
+    function drawMaze() {
+       
+      ctx.drawImage(maze, mazeX, mazeY,15*box,5*box);
+      ctx.drawImage(maze, maze1X, maze1Y,15*box,5*box);
+      ctx.drawImage(maze, maze2X, maze2Y,15*box,5*box);
+      ctx.drawImage(maze, maze3X, maze3Y,5*box,15*box);
+   // ctx.fillStyle = FOOD_COLOUR;
+   // ctx.strokestyle = FOOD_BORDER_COLOUR;
+   // ctx.fillRect(foodX, foodY, box, box);
+    //ctx.strokeRect(foodX, foodY, box, box);
+  }
+
+  function createMaze() {
+   
+    mazeX = random1(gameCanvas.width/2,gameCanvas.width-5*box);
+    
+    mazeY = random1(box,gameCanvas.height/2 - 5*box);
+    
+  }
+  function createMaze1() {
+   
+    maze1X = random1(box, gameCanvas.width/2 - 5*box);
+    
+    maze1Y = random1(gameCanvas.height/2, gameCanvas.height-5*box);
+    
+  }
+  function createMaze2() {
+   
+    maze2X = random1(gameCanvas.width/2 ,gameCanvas.width-10*box);
+    
+    maze2Y = random1(gameCanvas.height/2, gameCanvas.height-5*box);
+    
+  }
+  function createMaze3() {
+   
+    maze3X = random1(gameCanvas.width/4 - 5*box,3*gameCanvas.width/4-5*box);
+    
+    maze3Y = random1(box,3*gameCanvas.height/4-5*box);
+    
+  }
+
+
+
+  function didGameEnd() {
+    for (let i = 4; i < snake.length; i++)
+    {
+      if ((snake[i].x === snake[0].x) && (snake[i].y === snake[0].y))
+      { 
+        alert2.play();
+        return true;
+      }
+    }
+
+    if ((snake[0].x>=mazeX) &&(snake[0].x<=mazeX+14*box)&&(snake[0].y>=mazeY) &&(snake[0].y<=mazeY+4*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze1X) &&(snake[0].x<=maze1X+14*box)&&(snake[0].y>=maze1Y) &&(snake[0].y<=maze1Y+4*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze2X) &&(snake[0].x<=maze2X+14*box)&&(snake[0].y>=maze2Y) &&(snake[0].y<=maze2Y+4*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze3X) &&(snake[0].x<=maze3X+4*box)&&(snake[0].y>=maze3Y) &&(snake[0].y<=maze3Y+14*box))
+    { 
+      alert2.play();
+      return true;
+    }
+
+
+
+    /*const hitLeftWall = snake[0].x <=-2;
+   const hitRightWall = snake[0].x >= gameCanvas.width ;
+  const hitToptWall = snake[0].y <=-2;
+   const hitBottomWall = snake[0].y >= gameCanvas.height ;
+
+  return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall*/
+  }
 
     
     
@@ -219,7 +328,7 @@ bgn1.src="audio/bgn1.mp3";
       
      }
 
-     var slider1 = document.getElementById("myRange1");
+    /* var slider1 = document.getElementById("myRange1");
      var output1 = document.getElementById("demo1");
      output1.innerHTML = slider1.value;
      
@@ -268,7 +377,7 @@ bgn1.src="audio/bgn1.mp3";
         // Call game again
       
      }
-
+*/
     
 
 
@@ -389,6 +498,7 @@ window.addEventListener('load', function(){
 
   })
 }, false)
+
 var o1 = document.getElementById("demo4");
 var o2 = document.getElementById("demo5");
 function myFunction1(){
@@ -562,7 +672,7 @@ if(bhitBottomWall&&goingDown1)
    
     // Create the first food location
     createFood();
-    createMaze();
+    
     // Call changeDirection whenever a key is pressed
     document.addEventListener("keydown", changeDirection);
    
@@ -638,7 +748,7 @@ if(bhitBottomWall&&goingDown1)
       drawFood();
       advanceSnake();
       drawSnake();
-     // drawMaze();
+      drawMaze();
       if(chk===1){
         myFunction();
       }
@@ -650,8 +760,8 @@ if(bhitBottomWall&&goingDown1)
     
     function main() {
       
-       if(screen.width>1000)
-      openFullscreen();
+       /*if(screen.width>1000)
+      openFullscreen();*/
       
       
      /*if( abouttoEndGamex()){
@@ -664,12 +774,12 @@ if(bhitBottomWall&&goingDown1)
           main6();       
         }     
         }
-        if(chk===1)
+        /*if(chk===1)
         {
           endplay.pause();
           bga.play();
           bgn1.pause();
-        }
+        }*/
         if(chk===0)
         {
           endplay.pause();
@@ -677,9 +787,9 @@ if(bhitBottomWall&&goingDown1)
           bgn1.play();
         }
        
-        document.getElementById("demo4").onclick = function() {myFunction1()};
-        document.getElementById("demo5").onclick = function() {myFunction2()};
-
+        /*document.getElementById("demo4").onclick = function() {myFunction1()};
+        document.getElementById("demo5").onclick = function() {myFunction2()};*/
+        gs=GAME_SPEED;
         document.getElementById("demo6").onclick = function() {main4()};
         document.getElementById("demo7").onclick = function() {main5()};
       setTimeout(onTick,GAME_SPEED);
@@ -710,7 +820,7 @@ if(bhitBottomWall&&goingDown1)
       
        var c0=0;
        function main4(){
-         GAME_SPEED=100;
+         GAME_SPEED=400-(4*slider.value);;
          if(c0===0)
          {
            main();
@@ -756,11 +866,11 @@ if(bhitBottomWall&&goingDown1)
       
       }
       else if(score>30)
-        ctx.drawImage(canb3, 0, 0,gameCanvas.width,gameCanvas.height);
+        ctx.drawImage(canb0, 0, 0,gameCanvas.width,gameCanvas.height);
         else if(score>15)
-        ctx.drawImage(canb2, 0, 0,gameCanvas.width,gameCanvas.height);
+        ctx.drawImage(canb3, 0, 0,gameCanvas.width,gameCanvas.height);
         else if(score>5)
-        ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
+        ctx.drawImage(canb2, 0, 0,gameCanvas.width,gameCanvas.height);
         else if(score>75)
         ctx.drawImage(canb0, 0, 0,gameCanvas.width,gameCanvas.height);
         else if(score>85)
@@ -774,11 +884,11 @@ if(bhitBottomWall&&goingDown1)
         else if(score>100)
           ctx.drawImage(canb3, 0, 0,gameCanvas.width,gameCanvas.height);
           else if(score>111)
-          ctx.drawImage(canb2, 0, 0,gameCanvas.width,gameCanvas.height);
-          else if(score>130)
-          ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
-          else
           ctx.drawImage(canb0, 0, 0,gameCanvas.width,gameCanvas.height);
+          else if(score>130)
+          ctx.drawImage(canb2, 0, 0,gameCanvas.width,gameCanvas.height);
+          else
+          ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
   
 
 
@@ -796,9 +906,7 @@ if(bhitBottomWall&&goingDown1)
       //ctx.strokeRect(foodX, foodY, box, box);
     }
 
-    function drawMaze(){
-      ctx.drawImage(snakehead_0, mazeX, mazeY,3*box,3*box);
-    }
+    
 
     /**
      * Advances the snake by changing the x-coordinates of its parts
@@ -824,17 +932,21 @@ if(bhitBottomWall&&goingDown1)
       if (didEatFood) {
           eat.play();
         // Increase score
-        score += 1;
+        score += 2;
         // Display score on screen
         document.getElementById('score').innerHTML = score;
         
         // Generate new food location
         createFood();
-        createMaze();
+       
       } else if(!didEatFood){
         // Remove the last part of snake body
         snake.pop();
       }
+      if(hitRightWall){snake[0].x =box;}
+      if(hitLeftWall){snake[0].x = gameCanvas.width-box;}
+      if(hitToptWall){snake[0].y = gameCanvas.height-box;}
+      if(hitBottomWall){snake[0].y = box;}
       
     }
    
@@ -875,33 +987,8 @@ if(bhitBottomWall&&goingDown1)
 
       }*/
      
-    function didGameEnd() {
-      for (let i = 4; i < snake.length; i++)
-      {
-        if ((snake[i].x === snake[0].x) && (snake[i].y === snake[0].y))
-        { 
-          alert2.play();
-          return true;
-        }
-      }
-
-      const hitLeftWall = snake[0].x <=-2;
-     const hitRightWall = snake[0].x >= gameCanvas.width ;
-    const hitToptWall = snake[0].y <=-2;
-     const hitBottomWall = snake[0].y >= gameCanvas.height ;
-
-    return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
-    }
-
-    /**
-     * Generates a random number that is a multiple of box given a minumum
-     * and a maximum number
-     * @param { number } min - The minimum number the random number can be
-     * @param { number } max - The maximum number the random number can be
-     */
-    function randomTen(min, max) {
-      return Math.round((Math.random() * (max-min) + min) / box) * box;
-    }
+    
+    
 
     /**
      * Creates random set of coordinates for the snake food.
@@ -912,22 +999,32 @@ if(bhitBottomWall&&goingDown1)
       // Generate a random number for the food y-coordinate
       foodY = randomTen(3*box, gameCanvas.height - 3*box);
 
+      if ((foodX>=mazeX) &&(foodX<=mazeX+15*box)&&(foodY>=mazeY) &&(foodY<=mazeY+5*box))
+      { 
+        createFood();
+      }
+      if ((foodX>=maze1X) &&(foodX<=maze1X+15*box)&&(foodY>=maze1Y) &&(foodY<=maze1Y+5*box))
+      { 
+        createFood();
+      }
+      if ((foodX>=maze2X) &&(foodX<=maze2X+15*box)&&(foodY>=maze2Y) &&(foodY<=maze2Y+5*box))
+      { 
+        createFood();
+      }
+      if ((foodX>=maze3X) &&(foodX<=maze3X+5*box)&&(foodY>=maze3Y) &&(foodY<=maze3Y+15*box))
+      { 
+        createFood();
+      }
+
       // if the new food location is where the snake currently is, generate a new food location
       snake.forEach(function isFoodOnSnake(part) {
         const foodIsoNsnake = part.x == foodX && part.y == foodY;
-        if (foodIsoNsnake) {createFood();createMaze();}
+        if (foodIsoNsnake) {createFood();}
       });
     }
     
     
-    function createMaze(){
-      
-      mazeX = randomTen(3*box, gameCanvas.width - 3*box);
-      // Generate a random number for the food y-coordinate
-      mazeY = randomTen(3*box, gameCanvas.height - 3*box);
-
-
-    }
+    
 
     /**
      * Draws the snake on the canvas
@@ -950,6 +1047,7 @@ if(bhitBottomWall&&goingDown1)
         if(i==0){
           ctx.drawImage(snakehead_0, snake[i].x, snake[i].y, box, box);
         }
+        
         else
         ctx.drawImage(snakehead_1, snake[i].x, snake[i].y, box, box);
 

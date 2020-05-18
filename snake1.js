@@ -35,6 +35,8 @@ var gs=0;
         
     touchsurface2.width=gameCanvas.width;
     touchsurface2.height=gameCanvas.height;
+    const gw=gameCanvas.width;
+    const gh=gameCanvas.height;
     // load images
 
 const ground = new Image();
@@ -388,11 +390,13 @@ window.addEventListener('load', function(){
 
   })
 }, false)
+
+var c11=0;
 var o1 = document.getElementById("demo4");
 var o2 = document.getElementById("demo5");
 function myFunction1(){
       chk=1;
-      
+      c11=0;
  o1.innerHTML = "ON ✔";
  o2.innerHTML = "OFF";
  GAME_SPEED=0;
@@ -402,6 +406,7 @@ function myFunction1(){
 }
 function myFunction2(){
   chk=0;
+  c11=1;
   
   o1.innerHTML = "ON";
   o2.innerHTML = "OFF✔";
@@ -413,6 +418,17 @@ function myFunction2(){
 
 
 function myFunction(){
+  if(c11==0)
+  {
+    createFood();
+    c11=1;
+    gameCanvas.width=gw;
+    gameCanvas.height=gh;
+    touchsurface2.width=gw;
+    touchsurface2.height=gh;
+  }
+
+  box=10;
 
   const goingUp1 = dy === -box;
   const goingDown1 = dy === box;
@@ -649,7 +665,7 @@ if(bhitBottomWall&&goingDown1)
     
     function main() {
       
-       if(screen.width>1000)
+      /* if(screen.width>1000)
       openFullscreen();
       
       
@@ -709,7 +725,7 @@ if(bhitBottomWall&&goingDown1)
       
        var c0=0;
        function main4(){
-         GAME_SPEED=100;
+         GAME_SPEED=400-(4*slider.value);;
          if(c0===0)
          {
            main();
@@ -777,7 +793,7 @@ if(bhitBottomWall&&goingDown1)
           else if(score>130)
           ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
           else
-          ctx.drawImage(canb0, 0, 0,gameCanvas.width,gameCanvas.height);
+          ctx.drawImage(canb4, 0, 0,gameCanvas.width,gameCanvas.height);
   
 
 
@@ -949,6 +965,7 @@ if(bhitBottomWall&&goingDown1)
         if(i==0){
           ctx.drawImage(snakehead_0, snake[i].x, snake[i].y, box, box);
         }
+        
         else
         ctx.drawImage(snakehead_1, snake[i].x, snake[i].y, box, box);
 

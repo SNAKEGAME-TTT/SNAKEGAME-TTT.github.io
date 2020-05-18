@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html id="html">
+  <head>
+  	<title>Snake Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
+    <!--<script src="https://kit.fontawesome.com/yourcode.js"></script>-->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">        
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet"  href="snake3.css">
+  </head>
+  <body onload="checkCookie()" id="body">
+    
+  <p class="s">SCORE:</p>
+    <div id="score">0</div>
+    <ul>
+      <li>
+          <a href="snake3.html">
+             <span></span>
+             <span></span>
+             <span></span>
+             <span></span>
+             <span><small><small><small><i class="fas fa-gamepad"><br><small>NEW<br><small><small>Lvl:3</small></small></small></i></small></small></small></span>       </a>
+      </li>
+      <li>
+          <a href="index.html">
+             <span></span>
+             <span></span>
+             <span></span>
+             <span></span>
+             <span><small><small><small><i class="fas fa-gamepad"><br><small><small><small><small>Unbounded</small></small></small><br><small><small>Lvl:0</small></small></small></i></small></small></small></span>       </a>
+          </a>
+      </li>
+      <li>
+          <a href="snake1.html">
+             <span></span>
+             <span></span>
+             <span></span>
+             <span></span>
+             <span><small><small><small><i class="fas fa-gamepad"><br><small>Bounded<br><small><small>Lvl:1</small></small></small></i></small></small></small></span>       </a>
+          </a>         
+      </li> 
+      <li>
+        <a href="snake2.html">
+           <span></span>
+           <span></span>
+           <span></span>
+           <span></span>
+           <span><small><small><small><i class="fas fa-gamepad"><br><small>Maze2<br><small><small>Lvl:2</small></small></small></i></small></small></small></span>       </a>
+          </a>         
+    </li> 
+  </ul>
+   
+  <img class="si" src="img/snakehead.gif" alt="">
+  <img class="si1" src="img/snakehead1.gif" alt="">
+      
+    <div class="canva"></div>
+      
+      <canvas id="gameCanvas"  width="960" height="480"></canvas>
+    
+    
+  
+        <canvas class="ts" id="touchsurface2" width="960" height="480"></canvas>
+       <div class="sco"><h4 style="color: white;">Game Speed controller</h4>
+
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100"  class="slider" id="myRange">
+          <p style="color: violet;"> <big>Speed:</big> <span id="demo"></span></p>
+        </div></div>
+
+        <!-- <div class="sco1"><h4 style="color: white;">Snake size controller</h4>
+
+         <div class="slidecontainer1">
+            <input type="range" min="1" max="5"  class="slider1" id="myRange1">
+            <p style="color: violet;"> <big>Snake Size:</big> <span id="demo1"></span></p>
+          </div></div>
+
+          <div class="sco2"><h4 style="color: white;">Game width controller</h4>
+
+          <div class="slidecontainer2">
+            <input type="range" min="1" max="48"  class="slider2" id="myRange2">
+            <p style="color: violet;"> <big>Width:</big> <span id="demo2"></span></p>
+          </div></div>
+      
+          <div class="sco3"><h4 style="color: white;">Game height controller</h4>
+            
+            <div class="slidecontainer3">
+              <input type="range" min="1" max="56"  class="slider3" id="myRange3">
+              <p style="color: violet;"> <big>Height:</big> <span id="demo3"></span></p>
+            </div></div>-->
+            <div class="g">
+              <h4 style="color: white;">Gameplay:  <span id="demo6" style="cursor: pointer;">Play▶</span>
+                <span  id="demo7"style="cursor: pointer;"><b style="background-color:yellowgreen ;">Pause <b><b>||</b></b></b> <br><b style="visibility: hidden;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b><span class="tooltiptext">Double click to pause current music also!</span></span></h4>
+                
+              
+            </div>
+
+            <!--<div class="acg">
+              <h4 style="color: white;">Automated/computerized Gameplay:  <span id="demo4" style="cursor: pointer;">ON</span>
+                <span id="demo5"style="cursor: pointer;">OFF✔</span></h4>
+              
+            </div>-->
+            
+            <h4 class="fs" style="color: aliceblue;">FULLSCREEN:<button onclick="openFullscreen();" style="background-color: burlywood;"><span style="color: white;"> <small> OPEN </small></span></button><button onclick="closeFullscreen();" style="background-color: cyan;"><span style="color: white;"><small> CLOSE </small></span></button></h4>
+            
+            <video id="video1" height="0"  width="0" autoplay loop muted>
+              <source src="video/v0.mp4" type='video/mp4'>
+             </video>
+
+  </body>
+  
+
+  <script src="snake3.js"></script>
+  
+</html>

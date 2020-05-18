@@ -35,7 +35,8 @@ var gs=0;
 
     touchsurface2.width=gameCanvas.width;
     touchsurface2.height=gameCanvas.height;
-
+    const gw=gameCanvas.width;
+    const gh=gameCanvas.height;
     // load images
 
 const ground = new Image();
@@ -389,11 +390,12 @@ window.addEventListener('load', function(){
 
   })
 }, false)
+var c11=0;
 var o1 = document.getElementById("demo4");
 var o2 = document.getElementById("demo5");
 function myFunction1(){
       chk=1;
-      
+      c11=0
  o1.innerHTML = "ON ✔";
  o2.innerHTML = "OFF";
  GAME_SPEED=0;
@@ -403,7 +405,7 @@ function myFunction1(){
 }
 function myFunction2(){
   chk=0;
-  
+  c11=1;
   o1.innerHTML = "ON";
   o2.innerHTML = "OFF✔";
   GAME_SPEED=200;
@@ -414,6 +416,21 @@ function myFunction2(){
 
 
 function myFunction(){
+  if(c11==0)
+  {
+  createFood();
+  c11=1;
+  gameCanvas.width=gw;
+  gameCanvas.height=gh;
+  touchsurface2.width=gw;
+  touchsurface2.height=gh;
+  }
+  
+  
+    box=10;
+    
+  
+
 
   const goingUp1 = dy === -box;
   const goingDown1 = dy === box;
@@ -499,7 +516,7 @@ function myFunction(){
    
     // Create the first food location
     createFood();
-    createMaze();
+    
     // Call changeDirection whenever a key is pressed
     document.addEventListener("keydown", changeDirection);
    
@@ -575,11 +592,13 @@ function myFunction(){
       drawFood();
       advanceSnake();
       drawSnake();
-     // drawMaze();
+    
       if(chk===1){
         myFunction();
       }
       gs=GAME_SPEED;
+      /*if(screen.width>1000)
+      openFullscreen();*/
       // Call game again
       main();
     }
@@ -587,8 +606,7 @@ function myFunction(){
     
     function main() {
       
-       if(screen.width>1000)
-      openFullscreen();
+       
       
       
      /*if( abouttoEndGamex()){
@@ -647,7 +665,7 @@ function myFunction(){
       
        var c0=0;
        function main4(){
-         GAME_SPEED=100;
+         GAME_SPEED=400-(4*slider.value);
          if(c0===0)
          {
            main();
@@ -685,19 +703,19 @@ function myFunction(){
       if(score>65)
       ctx.drawImage(canb6, 0, 0,gameCanvas.width,gameCanvas.height);
       else if(score>50)
-      ctx.drawImage(canb4, 0, 0,gameCanvas.width,gameCanvas.height);
+      ctx.drawImage(canb5, 0, 0,gameCanvas.width,gameCanvas.height);
 
       else if(score>40)
       {
-        ctx.drawImage(canb5, 0, 0,gameCanvas.width,gameCanvas.height);
+        ctx.drawImage(canb0, 0, 0,gameCanvas.width,gameCanvas.height);
       
       }
       else if(score>30)
-        ctx.drawImage(canb3, 0, 0,gameCanvas.width,gameCanvas.height);
+        ctx.drawImage(canb4, 0, 0,gameCanvas.width,gameCanvas.height);
         else if(score>15)
-        ctx.drawImage(canb2, 0, 0,gameCanvas.width,gameCanvas.height);
+        ctx.drawImage(canb3, 0, 0,gameCanvas.width,gameCanvas.height);
         else if(score>5)
-        ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
+        ctx.drawImage(canb2, 0, 0,gameCanvas.width,gameCanvas.height);
         else if(score>75)
         ctx.drawImage(canb0, 0, 0,gameCanvas.width,gameCanvas.height);
         else if(score>85)
@@ -715,7 +733,7 @@ function myFunction(){
           else if(score>130)
           ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
           else
-          ctx.drawImage(canb0, 0, 0,gameCanvas.width,gameCanvas.height);
+          ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
   
 
 
@@ -734,10 +752,7 @@ function myFunction(){
       //ctx.strokeRect(foodX, foodY, box, box);
     }
 
-    function drawMaze(){
-      ctx.drawImage(snakehead_0, mazeX, mazeY,3*box,3*box);
-    }
-
+    
     /**
      * Advances the snake by changing the x-coordinates of its parts
      * according to the horizontal velocity and the y-coordinates of its parts
@@ -768,7 +783,7 @@ function myFunction(){
         
         // Generate new food location
         createFood();
-        createMaze();
+        
       } else if(!didEatFood){
         // Remove the last part of snake body
         snake.pop();
@@ -857,19 +872,12 @@ function myFunction(){
       // if the new food location is where the snake currently is, generate a new food location
       snake.forEach(function isFoodOnSnake(part) {
         const foodIsoNsnake = part.x == foodX && part.y == foodY;
-        if (foodIsoNsnake) {createFood();createMaze();}
+        if (foodIsoNsnake) {createFood();}
       });
     }
     
     
-    function createMaze(){
-      
-      mazeX = randomTen(3*box, gameCanvas.width - 3*box);
-      // Generate a random number for the food y-coordinate
-      mazeY = randomTen(3*box, gameCanvas.height - 3*box);
-
-
-    }
+    
 
     /**
      * Draws the snake on the canvas
@@ -892,6 +900,7 @@ function myFunction(){
         if(i==0){
           ctx.drawImage(snakehead_0, snake[i].x, snake[i].y, box, box);
         }
+        
         else
         ctx.drawImage(snakehead_1, snake[i].x, snake[i].y, box, box);
 
@@ -912,4 +921,10 @@ function myFunction(){
       // Draw a border around the snake part
       //ctx.strokeRect(snakePart.x, snakePart.y, box, box);
     }
+
+    /*window.onload = function () {  
+      document.onkeydown = function (e) {  
+          return (e.which || e.keyCode) != 116;  
+      };  
+    }*/
   

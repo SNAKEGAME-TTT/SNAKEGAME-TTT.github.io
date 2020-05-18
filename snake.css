@@ -175,13 +175,16 @@ ul li:hover span:nth-child(1){
     transform: translate(0px,-0px);
     opacity: 0.2;
 }
+ul li:nth-child(4):hover span{
+  background: red;
+}
 
 ul li:nth-child(3):hover span{
-    background: rgb(3, 112, 255);
+    background: orange;
 }
 
 ul li:nth-child(2):hover span{
-    background: rgb(255, 3, 108);
+    background: rgba(255, 255, 0, 0.431);
 }
 
 ul li:nth-child(1):hover span{
@@ -270,8 +273,9 @@ background: rgba(0, 0, 0, 0);
     width: 30px;
     height: 30px;
     border: 0;
-    background: url('img/food.png');
+    background: url('img/gsc1.jpg');
     cursor: pointer;
+    border-radius: 50%;
   }
   
  /* .slider::-moz-range-thumb {
@@ -318,8 +322,9 @@ background: rgba(0, 0, 0, 0);
     width: 30px;
     height: 30px;
     border: 0;
-    background: url('img/snake3.png');
+    background: url('img/ssc1.jpg');
     cursor: pointer;
+    border-radius: 50%;
   }
   
   /*.slider1::-moz-range-thumb {
@@ -361,18 +366,19 @@ background: rgba(0, 0, 0, 0);
   .slider2::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 23px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border: 0;
-    background: url('img/snake3.png');
+    background: url('img/gwc.jpg');
     cursor: pointer;
+    border-radius: 50%;
   }
   
   .slider2::-moz-range-thumb {
-    width: 23px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border: 0;
-    background: url('img/snake1.png');
+    background: url('img/gwc.jpg');
     cursor: pointer;
   }
 
@@ -407,18 +413,19 @@ background: rgba(0, 0, 0, 0);
   .slider3::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 23px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border: 0;
-    background: url('img/snake3.png');
+    background: url('img/ghc.jpg');
     cursor: pointer;
+    border-radius: 50%;
   }
   
   .slider3::-moz-range-thumb {
-    width: 23px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border: 0;
-    background: url('img/snake1.png');
+    background: url('img/ghc.jpg');
     cursor: pointer;
   }
 
