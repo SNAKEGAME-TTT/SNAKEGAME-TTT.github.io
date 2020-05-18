@@ -65,7 +65,9 @@ snakehead_1.src = "img/tail.png";
 const snaketail = new Image();
 snaketail.src = "img/tail1.png";
 const maze = new Image();
-maze.src = "img/maze.jpg";
+maze.src = "img/maze1.jpg";
+const maze1 = new Image();
+maze1.src = "img/maze.jpg";
 
 
 
@@ -103,11 +105,11 @@ bga.src="audio/bga.mp3";
 bgn1.src="audio/bgn1.mp3";
 
     let snake = [
-      {x: 0, y: box},
-      {x:-box, y: box},
-      {x:-2*box, y:box},
-      {x:-3*box, y:box},
-      {x:-4*box, y:box}
+      {x: 5*box, y: box},
+      {x:4*box, y: box},
+      {x:3*box, y:box},
+      {x:2*box, y:box},
+      {x:box, y:box}
     ]
 
 
@@ -132,6 +134,14 @@ bgn1.src="audio/bgn1.mp3";
     let maze2Y;
     let maze3X;
     let maze3Y;
+    let maze4X;
+    let maze4Y;
+    let maze5X;
+    let maze5Y;
+    let maze6X;
+    let maze6Y;
+    let maze7X;
+    let maze7Y;
 
     var mIc=0;
     function myInstructions() {
@@ -139,7 +149,6 @@ bgn1.src="audio/bgn1.mp3";
       myWindow.document.write("<p>A new window!</p>");
       myWindow.focus();
     }
-
 
     /**
      * Generates a random number that is a multiple of box given a minumum
@@ -153,16 +162,42 @@ bgn1.src="audio/bgn1.mp3";
     function random1(min, max) {
       return Math.round((Math.random() * (max-min) + min) / box) * box;
     }
-  createMaze1();    
   createMaze();
+  createMaze1();    
   createMaze2();
   createMaze3();
+  createMaze4();
+  createMaze5();
+  createMaze6();
+  createMaze7();
+  createMaze8();
+  createMaze9();
+  createMaze10();
+  createMaze11();
+  createMaze12();
+  createMaze13();
+  createMaze14();
+  createMaze15();
+  createMaze16();
     function drawMaze() {
        
-      ctx.drawImage(maze, mazeX, mazeY,15*box,5*box);
-      ctx.drawImage(maze, maze1X, maze1Y,15*box,5*box);
-      ctx.drawImage(maze, maze2X, maze2Y,15*box,5*box);
-      ctx.drawImage(maze, maze3X, maze3Y,5*box,15*box);
+      ctx.drawImage(maze, mazeX, mazeY,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze1X, maze1Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze1, maze2X, maze2Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze3X, maze3Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze4X, maze4Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze1, maze5X, maze5Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze6X, maze6Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze7X, maze7Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze1, maze8X, maze8Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze9X, maze9Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze10X, maze10Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze1, maze11X, maze11Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze12X, maze12Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze13X, maze13Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze1, maze14X, maze14Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze15X, maze15Y,gameCanvas.width/4-box,3*box);
+      ctx.drawImage(maze, maze16X, maze16Y,gameCanvas.width/4-box,3*box);
    // ctx.fillStyle = FOOD_COLOUR;
    // ctx.strokestyle = FOOD_BORDER_COLOUR;
    // ctx.fillRect(foodX, foodY, box, box);
@@ -171,35 +206,130 @@ bgn1.src="audio/bgn1.mp3";
 
   function createMaze() {
    
-    mazeX = random1(gameCanvas.width/2,gameCanvas.width-5*box);
+    mazeX = box;
     
-    mazeY = random1(box,gameCanvas.height/2 - 5*box);
+    mazeY = 4*box;
     
   }
   function createMaze1() {
    
-    maze1X = random1(box, gameCanvas.width/2 - 5*box);
+    maze1X = gameCanvas.width-(gameCanvas.width/4)-box;
     
-    maze1Y = random1(gameCanvas.height/2, gameCanvas.height-5*box);
+    maze1Y =  4*box;
     
   }
   function createMaze2() {
    
-    maze2X = random1(gameCanvas.width/2 ,gameCanvas.width-10*box);
+    maze2X = gameCanvas.width/2-gameCanvas.width/8;
     
-    maze2Y = random1(gameCanvas.height/2, gameCanvas.height-5*box);
+    maze2Y = 8*box;
     
   }
   function createMaze3() {
    
-    maze3X = random1(gameCanvas.width/4 - 5*box,2*gameCanvas.width/4-5*box);
+    maze3X = box;
     
-    maze3Y = random1(box,2*gameCanvas.height/4-5*box);
+    maze3Y =12*box;
+    
+  }
+  function createMaze4() {
+   
+    maze4X = gameCanvas.width-(gameCanvas.width/4)-box;
+    
+    maze4Y =  12*box;
+    
+  }
+  function createMaze5() {
+   
+    maze5X =  gameCanvas.width/2-gameCanvas.width/8;
+    
+    maze5Y =16*box;
+    
+  }
+  function createMaze6() {
+   
+    maze6X = box;
+    
+    maze6Y = 20*box
+    
+  }
+
+  function createMaze7() {
+   
+    maze7X = gameCanvas.width-(gameCanvas.width/4)-box
+    
+    maze7Y = 20*box;
+    
+  }
+  function createMaze8() {
+   
+    maze8X =  gameCanvas.width/2-gameCanvas.width/8;
+    
+    maze8Y =24*box;
+    
+  }
+  function createMaze9() {
+   
+    maze9X = box;
+    
+    maze9Y = 28*box
+    
+  }
+
+  function createMaze10() {
+   
+    maze10X = gameCanvas.width-(gameCanvas.width/4)-box
+    
+    maze10Y = 28*box;
+    
+  }
+  function createMaze11() {
+   
+    maze11X =  gameCanvas.width/2-gameCanvas.width/8;
+    
+    maze11Y =32*box;
+    
+  }
+  function createMaze12() {
+   
+    maze12X = box;
+    
+    maze12Y = 36*box
+    
+  }
+
+  function createMaze13() {
+   
+    maze13X = gameCanvas.width-(gameCanvas.width/4)-box
+    
+    maze13Y = 36*box;
+    
+  }
+  function createMaze14() {
+   
+    maze14X =  gameCanvas.width/2-gameCanvas.width/8;
+    
+    maze14Y =40*box;
+    
+  }
+  function createMaze15() {
+   
+    maze15X = box;
+    
+    maze15Y = 44*box
+    
+  }
+
+  function createMaze16() {
+   
+    maze16X = gameCanvas.width-(gameCanvas.width/4)-box
+    
+    maze16Y = 44*box;
     
   }
 
 
-
+var bch=1;
   function didGameEnd() {
     for (let i = 4; i < snake.length; i++)
     {
@@ -210,35 +340,153 @@ bgn1.src="audio/bgn1.mp3";
       }
     }
 
-    if ((snake[0].x>=mazeX) &&(snake[0].x<=mazeX+14*box)&&(snake[0].y>=mazeY) &&(snake[0].y<=mazeY+4*box))
+    if ((snake[0].x>=mazeX) &&(snake[0].x<=mazeX+gameCanvas.width/4-box-box)&&(snake[0].y>=mazeY) &&(snake[0].y<=mazeY+2*box))
     { 
       alert2.play();
       return true;
     }
-    if ((snake[0].x>=maze1X) &&(snake[0].x<=maze1X+14*box)&&(snake[0].y>=maze1Y) &&(snake[0].y<=maze1Y+4*box))
+    if ((snake[0].x>=maze1X) &&(snake[0].x<=maze1X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze1Y) &&(snake[0].y<=maze1Y+2*box))
     { 
       alert2.play();
       return true;
     }
-    if ((snake[0].x>=maze2X) &&(snake[0].x<=maze2X+14*box)&&(snake[0].y>=maze2Y) &&(snake[0].y<=maze2Y+4*box))
+    if ((snake[0].x>=maze2X) &&(snake[0].x<=maze2X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze2Y) &&(snake[0].y<=maze2Y+2*box))
     { 
       alert2.play();
       return true;
     }
-    if ((snake[0].x>=maze3X) &&(snake[0].x<=maze3X+4*box)&&(snake[0].y>=maze3Y) &&(snake[0].y<=maze3Y+14*box))
+    if ((snake[0].x>=maze3X) &&(snake[0].x<=maze3X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze3Y) &&(snake[0].y<=maze3Y+2*box))
     { 
       alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze4X) &&(snake[0].x<=maze4X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze4Y) &&(snake[0].y<=maze4Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze5X) &&(snake[0].x<=maze5X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze5Y) &&(snake[0].y<=maze5Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze6X) &&(snake[0].x<=maze6X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze6Y) &&(snake[0].y<=maze6Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze8X) &&(snake[0].x<=maze8X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze8Y) &&(snake[0].y<=maze8Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze9X) &&(snake[0].x<=maze9X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze9Y) &&(snake[0].y<=maze9Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze10X) &&(snake[0].x<=maze10X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze10Y) &&(snake[0].y<=maze10Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze11X) &&(snake[0].x<=maze11X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze11Y) &&(snake[0].y<=maze11Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze12X) &&(snake[0].x<=maze12X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze12Y) &&(snake[0].y<=maze12Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze7X) &&(snake[0].x<=maze7X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze7Y) &&(snake[0].y<=maze7Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze13X) &&(snake[0].x<=maze13X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze13Y) &&(snake[0].y<=maze13Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze14X) &&(snake[0].x<=maze14X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze14Y) &&(snake[0].y<=maze14Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze15X) &&(snake[0].x<=maze15X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze15Y) &&(snake[0].y<=maze15Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze16X) &&(snake[0].x<=maze16X+gameCanvas.width/4-box-box)&&(snake[0].y>=maze16Y) &&(snake[0].y<=maze16Y+2*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    
+    if(bch==1)
+    {
+      if(bodercheck())
       return true;
     }
 
-
-
-    /*const hitLeftWall = snake[0].x <=-2;
+  }
+  function bodercheck()
+{
+    const hitLeftWall = snake[0].x <=-2;
    const hitRightWall = snake[0].x >= gameCanvas.width ;
   const hitToptWall = snake[0].y <=-2;
    const hitBottomWall = snake[0].y >= gameCanvas.height ;
 
-  return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall*/
+  return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
+  }
+
+  function createFood() {
+    // Generate a random number the food x-coordinate
+    foodX = randomTen(3*box, gameCanvas.width - 3*box);
+    // Generate a random number for the food y-coordinate
+    foodY = randomTen(3*box, gameCanvas.height - 3*box);
+
+    if ((foodX>=mazeX) &&(foodX<=mazeX+gameCanvas.width/4-box)&&(foodY>=mazeY) &&(foodY<=mazeY+3*box))
+    { 
+      createFood();
+    }
+    if ((foodX>=maze1X) &&(foodX<=maze1X+gameCanvas.width/4-box)&&(foodY>=maze1Y) &&(foodY<=maze1Y+3*box))
+    { 
+      createFood();
+    }
+    if ((foodX>=maze2X) &&(foodX<=maze2X+gameCanvas.width/4-box)&&(foodY>=maze2Y) &&(foodY<=maze2Y+3*box))
+    { 
+      createFood();
+    }
+    if ((foodX>=maze3X) &&(foodX<=maze3X+gameCanvas.width/4-box)&&(foodY>=maze3Y) &&(foodY<=maze3Y+3*box))
+    { 
+      createFood();
+    }
+    if ((foodX>=maze4X) &&(foodX<=maze4X+gameCanvas.width/4-box)&&(foodY>=maze4Y) &&(foodY<=maze4Y+3*box))
+    { 
+      createFood();
+    }
+    if ((foodX>=maze5X) &&(foodX<=maze5X+gameCanvas.width/4-box)&&(foodY>=maze5Y) &&(foodY<=maze5Y+5*box))
+    { 
+      createFood();
+    }
+    if ((foodX>=maze6X) &&(foodX<=maze6X+gameCanvas.width/4-box)&&(foodY>=maze6Y) &&(foodY<=maze6Y+3*box))
+    { 
+      createFood();
+    }
+    if ((foodX>=maze7X) &&(foodX<=maze7X+gameCanvas.width/4-box)&&(foodY>=maze7Y) &&(foodY<=maze7Y+3*box))
+    { 
+      createFood();
+    }
+
+    // if the new food location is where the snake currently is, generate a new food location
+    snake.forEach(function isFoodOnSnake(part) {
+      const foodIsoNsnake = part.x == foodX && part.y == foodY;
+      if (foodIsoNsnake) {createFood();}
+    });
   }
 
     
@@ -268,26 +516,26 @@ bgn1.src="audio/bgn1.mp3";
     }
     
     function checkCookie() {
-      var user=getCookie("username");
-      username=getCookie("username");
-      if (user != "") {
-        alert("Welcome again " + user +  "!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: "+user+", to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
-        main();
-      }
-      
-      else {
-         user = prompt("Please enter your name🙂:","");
-         if (user != "" && user != null) {
-           setCookie("username", user, 30);
-          alert("Hola "+user+"!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: "+user+", to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
+        var user=getCookie("username");
+        username=getCookie("username");
+        if (user != "") {
+          alert("Welcome again " + user +  "!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: "+user+", to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
           main();
-         }
-         else{
-           alert("Hola amigo!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: AMIGO, to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
-           main();
-         }
+        }
+        
+        else {
+           user = prompt("Please enter your name🙂:","");
+           if (user != "" && user != null) {
+             setCookie("username", user, 30);
+            alert("Hola "+user+"!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: "+user+", to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
+            main();
+           }
+           else{
+             alert("Hola amigo!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: AMIGO, to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
+             main();
+           }
+        }
       }
-    }
 
     //var person = prompt("Please enter your name", "Harry Potter");
 
@@ -509,24 +757,18 @@ window.addEventListener('load', function(){
 var o1 = document.getElementById("demo4");
 var o2 = document.getElementById("demo5");
 function myFunction1(){
-      chk=1;
+      bch=1;
       
- o1.innerHTML = "ON ✔";
- o2.innerHTML = "OFF";
- GAME_SPEED=0;
- slider.value=100;
- output.innerHTML = slider.value;
- output.innerHTML = this.value;
+ o1.innerHTML = "Active ✔";
+ o2.innerHTML = "Deactive";
+
 }
 function myFunction2(){
-  chk=0;
+  bch=0;
   
-  o1.innerHTML = "ON";
-  o2.innerHTML = "OFF✔";
-  GAME_SPEED=200;
-  slider.value=50;
-  output.innerHTML = slider.value;
-  output.innerHTML = this.value;
+  o1.innerHTML = "Active";
+  o2.innerHTML = "Deactive✔";
+  
 }
 
 
@@ -794,8 +1036,8 @@ if(bhitBottomWall&&goingDown1)
           bgn1.play();
         }
        
-        /*document.getElementById("demo4").onclick = function() {myFunction1()};
-        document.getElementById("demo5").onclick = function() {myFunction2()};*/
+        document.getElementById("demo4").onclick = function() {myFunction1()};
+        document.getElementById("demo5").onclick = function() {myFunction2()};
         gs=GAME_SPEED;
         document.getElementById("demo6").onclick = function() {main4()};
         document.getElementById("demo7").onclick = function() {main5()};
@@ -939,7 +1181,10 @@ if(bhitBottomWall&&goingDown1)
       if (didEatFood) {
           eat.play();
         // Increase score
-        score += 2;
+        if(bch==1)
+        score += 3;
+        else
+        score+=2;
         // Display score on screen
         document.getElementById('score').innerHTML = score;
         
@@ -950,10 +1195,13 @@ if(bhitBottomWall&&goingDown1)
         // Remove the last part of snake body
         snake.pop();
       }
+      if(bch==0)
+      {
       if(hitRightWall){snake[0].x =box;}
       if(hitLeftWall){snake[0].x = gameCanvas.width-box;}
       if(hitToptWall){snake[0].y = gameCanvas.height-box;}
       if(hitBottomWall){snake[0].y = box;}
+      }
       
     }
    
@@ -1000,35 +1248,7 @@ if(bhitBottomWall&&goingDown1)
     /**
      * Creates random set of coordinates for the snake food.
      */
-    function createFood() {
-      // Generate a random number the food x-coordinate
-      foodX = randomTen(3*box, gameCanvas.width - 3*box);
-      // Generate a random number for the food y-coordinate
-      foodY = randomTen(3*box, gameCanvas.height - 3*box);
-
-      if ((foodX>=mazeX) &&(foodX<=mazeX+15*box)&&(foodY>=mazeY) &&(foodY<=mazeY+5*box))
-      { 
-        createFood();
-      }
-      if ((foodX>=maze1X) &&(foodX<=maze1X+15*box)&&(foodY>=maze1Y) &&(foodY<=maze1Y+5*box))
-      { 
-        createFood();
-      }
-      if ((foodX>=maze2X) &&(foodX<=maze2X+15*box)&&(foodY>=maze2Y) &&(foodY<=maze2Y+5*box))
-      { 
-        createFood();
-      }
-      if ((foodX>=maze3X) &&(foodX<=maze3X+5*box)&&(foodY>=maze3Y) &&(foodY<=maze3Y+15*box))
-      { 
-        createFood();
-      }
-
-      // if the new food location is where the snake currently is, generate a new food location
-      snake.forEach(function isFoodOnSnake(part) {
-        const foodIsoNsnake = part.x == foodX && part.y == foodY;
-        if (foodIsoNsnake) {createFood();}
-      });
-    }
+    
     
     
     

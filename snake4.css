@@ -427,12 +427,12 @@ background: rgba(0, 0, 0, 0);
   background: url('img/ghc.jpg');
   cursor: pointer;
 }
- /*.acg{
+ .acg{
    top: 9rem;
    position: fixed;
    left: 30%;
    z-index: 2000;
- }*/
+ }
  .myi{
   top: 14rem;
   position: fixed;
@@ -442,6 +442,7 @@ background: rgba(0, 0, 0, 0);
   color: seagreen;
   background-color: rgb(255, 3, 142);
 }
+
  .g{
    top: 1rem;
    position: fixed;

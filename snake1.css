@@ -433,11 +433,20 @@ background: rgba(0, 0, 0, 0);
    left: 30%;
    z-index: 2000;
  }
+ .myi{
+  top: 14rem;
+  position: fixed;
+  left: 0.1%;
+  z-index: 2000;
+  border-radius: 40%;
+  color: seagreen;
+  background-color: rgb(255, 3, 142);
+}
 
  .g{
    top: 3rem;
    position: fixed;
-   left: 50%;
+   left: 60%;
    z-index: 2000;
  }
  .fs{

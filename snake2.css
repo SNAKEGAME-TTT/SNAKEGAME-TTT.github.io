@@ -238,10 +238,21 @@ background: rgba(0, 0, 0, 0);
    z-index: 0;
 }
 
+.myi{
+  top: 14rem;
+  position: fixed;
+  left: 0.1%;
+  z-index: 2000;
+  border-radius: 40%;
+  color: seagreen;
+  background-color: rgb(255, 3, 142);
+}
+
+
 .sco{
    top: 5rem;
    position: fixed;
-   left: 50%;
+   left: 60%;
    z-index: 2000;
 }
 
@@ -437,7 +448,7 @@ background: rgba(0, 0, 0, 0);
  .g{
    top: 1rem;
    position: fixed;
-   left: 50%;
+   left: 60%;
    z-index: 2000;
  }
  .fs{

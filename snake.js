@@ -124,8 +124,12 @@ bgn1.src="audio/bgn1.mp3";
     let mazeX;
     let mazeY;
       
-  
-
+    var mIc=0;
+    function myInstructions() {
+      var myWindow = window.open("", "", "width=400,height=400");
+      myWindow.document.write("<p>A new window!</p>");
+      myWindow.focus();
+    }
     
     
 
@@ -156,7 +160,7 @@ bgn1.src="audio/bgn1.mp3";
       var user=getCookie("username");
       username=getCookie("username");
       if (user != "") {
-        alert("Welcome again " + user +  "!😎  Yo!\nStart your 🐍 game😀?");
+        alert("Welcome again " + user +  "!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: "+user+", to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
         main();
       }
       
@@ -164,11 +168,11 @@ bgn1.src="audio/bgn1.mp3";
          user = prompt("Please enter your name🙂:","");
          if (user != "" && user != null) {
            setCookie("username", user, 30);
-          alert("Hola "+user+"!😎  Yo!\nStart your 🐍 game😀?");
+          alert("Hola "+user+"!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: "+user+", to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
           main();
          }
          else{
-           alert("Hola amigo!😎  Yo!\nStart your 🐍 game😀?");
+           alert("Hola amigo!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: AMIGO, to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
            main();
          }
       }
@@ -592,7 +596,9 @@ function myFunction(){
       drawFood();
       advanceSnake();
       drawSnake();
-    
+      
+       
+      
       if(chk===1){
         myFunction();
       }
@@ -606,12 +612,7 @@ function myFunction(){
     
     function main() {
       
-       
       
-      
-     /*if( abouttoEndGamex()){
-       alert1.play();
-     }*/
       // If the game ended return early to stop game
       if (didGameEnd()){ 
         alert1.play();

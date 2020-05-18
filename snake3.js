@@ -134,7 +134,17 @@ bgn1.src="audio/bgn1.mp3";
     let maze3Y;
     let maze4X;
     let maze4Y;
+    let maze5X;
+    let maze5Y;
+    let maze6X;
+    let maze6Y;
 
+    var mIc=0;
+    function myInstructions() {
+      var myWindow = window.open("", "", "width=400,height=400");
+      myWindow.document.write("<p>A new window!</p>");
+      myWindow.focus();
+    }
 
     /**
      * Generates a random number that is a multiple of box given a minumum
@@ -153,13 +163,17 @@ bgn1.src="audio/bgn1.mp3";
   createMaze2();
   createMaze3();
   createMaze4();
+  createMaze5();
+  createMaze6();
     function drawMaze() {
        
-      ctx.drawImage(maze, mazeX, mazeY,15*box,5*box);
-      ctx.drawImage(maze, maze1X, maze1Y,15*box,5*box);
-      ctx.drawImage(maze, maze2X, maze2Y,15*box,5*box);
-      ctx.drawImage(maze, maze3X, maze3Y,5*box,15*box);
+      ctx.drawImage(maze, mazeX, mazeY,5*box,15*box);
+      ctx.drawImage(maze, maze1X, maze1Y,5*box,15*box);
+      ctx.drawImage(maze, maze2X, maze2Y,5*box,15*box);
+      ctx.drawImage(maze, maze3X, maze3Y,15*box,5*box);
       ctx.drawImage(maze, maze4X, maze4Y,5*box,5*box);
+      ctx.drawImage(maze, maze5X, maze5Y,5*box,5*box);
+      ctx.drawImage(maze, maze6X, maze6Y,5*box,5*box);
    // ctx.fillStyle = FOOD_COLOUR;
    // ctx.strokestyle = FOOD_BORDER_COLOUR;
    // ctx.fillRect(foodX, foodY, box, box);
@@ -189,9 +203,9 @@ bgn1.src="audio/bgn1.mp3";
   }
   function createMaze3() {
    
-    maze3X = random1(gameCanvas.width/4 - 5*box,3*gameCanvas.width/4-5*box);
+    maze3X = random1(gameCanvas.width/4 - 5*box,2*gameCanvas.width/4-5*box);
     
-    maze3Y = random1(box,3*gameCanvas.height/4-5*box);
+    maze3Y = random1(box,2*gameCanvas.height/4-5*box);
     
   }
   function createMaze4() {
@@ -199,6 +213,20 @@ bgn1.src="audio/bgn1.mp3";
     maze4X = random1(5*box,gameCanvas.width-5*box);
     
     maze4Y = random1(3*box,gameCanvas.height-5*box);
+    
+  }
+  function createMaze5() {
+   
+    maze5X = random1(5*box,gameCanvas.width-5*box);
+    
+    maze5Y = random1(3*box,gameCanvas.height-5*box);
+    
+  }
+  function createMaze6() {
+   
+    maze6X = random1(5*box,gameCanvas.width-5*box);
+    
+    maze6Y = random1(3*box,gameCanvas.height-5*box);
     
   }
 
@@ -214,22 +242,22 @@ bgn1.src="audio/bgn1.mp3";
       }
     }
 
-    if ((snake[0].x>=mazeX) &&(snake[0].x<=mazeX+14*box)&&(snake[0].y>=mazeY) &&(snake[0].y<=mazeY+4*box))
+    if ((snake[0].x>=mazeX) &&(snake[0].x<=mazeX+4*box)&&(snake[0].y>=mazeY) &&(snake[0].y<=mazeY+14*box))
     { 
       alert2.play();
       return true;
     }
-    if ((snake[0].x>=maze1X) &&(snake[0].x<=maze1X+14*box)&&(snake[0].y>=maze1Y) &&(snake[0].y<=maze1Y+4*box))
+    if ((snake[0].x>=maze1X) &&(snake[0].x<=maze1X+4*box)&&(snake[0].y>=maze1Y) &&(snake[0].y<=maze1Y+14*box))
     { 
       alert2.play();
       return true;
     }
-    if ((snake[0].x>=maze2X) &&(snake[0].x<=maze2X+14*box)&&(snake[0].y>=maze2Y) &&(snake[0].y<=maze2Y+4*box))
+    if ((snake[0].x>=maze2X) &&(snake[0].x<=maze2X+4*box)&&(snake[0].y>=maze2Y) &&(snake[0].y<=maze2Y+14*box))
     { 
       alert2.play();
       return true;
     }
-    if ((snake[0].x>=maze3X) &&(snake[0].x<=maze3X+4*box)&&(snake[0].y>=maze3Y) &&(snake[0].y<=maze3Y+14*box))
+    if ((snake[0].x>=maze3X) &&(snake[0].x<=maze3X+14*box)&&(snake[0].y>=maze3Y) &&(snake[0].y<=maze3Y+4*box))
     { 
       alert2.play();
       return true;
@@ -239,7 +267,16 @@ bgn1.src="audio/bgn1.mp3";
       alert2.play();
       return true;
     }
-
+    if ((snake[0].x>=maze5X) &&(snake[0].x<=maze5X+4*box)&&(snake[0].y>=maze5Y) &&(snake[0].y<=maze5Y+4*box))
+    { 
+      alert2.play();
+      return true;
+    }
+    if ((snake[0].x>=maze6X) &&(snake[0].x<=maze6X+4*box)&&(snake[0].y>=maze6Y) &&(snake[0].y<=maze6Y+4*box))
+    { 
+      alert2.play();
+      return true;
+    }
 
 
     const hitLeftWall = snake[0].x <=-2;
@@ -280,7 +317,7 @@ bgn1.src="audio/bgn1.mp3";
       var user=getCookie("username");
       username=getCookie("username");
       if (user != "") {
-        alert("Welcome again " + user +  "!😎  Yo!\nStart your 🐍 game😀?");
+        alert("Welcome again " + user +  "!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: "+user+", to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
         main();
       }
       
@@ -288,11 +325,11 @@ bgn1.src="audio/bgn1.mp3";
          user = prompt("Please enter your name🙂:","");
          if (user != "" && user != null) {
            setCookie("username", user, 30);
-          alert("Hola "+user+"!😎  Yo!\nStart your 🐍 game😀?");
+          alert("Hola "+user+"!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: "+user+", to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
           main();
          }
          else{
-           alert("Hola amigo!😎  Yo!\nStart your 🐍 game😀?");
+           alert("Hola amigo!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: AMIGO, to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
            main();
          }
       }
@@ -1012,23 +1049,31 @@ if(bhitBottomWall&&goingDown1)
       // Generate a random number for the food y-coordinate
       foodY = randomTen(3*box, gameCanvas.height - 3*box);
 
-      if ((foodX>=mazeX) &&(foodX<=mazeX+15*box)&&(foodY>=mazeY) &&(foodY<=mazeY+5*box))
+      if ((foodX>=mazeX) &&(foodX<=mazeX+5*box)&&(foodY>=mazeY) &&(foodY<=mazeY+15*box))
       { 
         createFood();
       }
-      if ((foodX>=maze1X) &&(foodX<=maze1X+15*box)&&(foodY>=maze1Y) &&(foodY<=maze1Y+5*box))
+      if ((foodX>=maze1X) &&(foodX<=maze1X+5*box)&&(foodY>=maze1Y) &&(foodY<=maze1Y+15*box))
       { 
         createFood();
       }
-      if ((foodX>=maze2X) &&(foodX<=maze2X+15*box)&&(foodY>=maze2Y) &&(foodY<=maze2Y+5*box))
+      if ((foodX>=maze2X) &&(foodX<=maze2X+5*box)&&(foodY>=maze2Y) &&(foodY<=maze2Y+15*box))
       { 
         createFood();
       }
-      if ((foodX>=maze3X) &&(foodX<=maze3X+5*box)&&(foodY>=maze3Y) &&(foodY<=maze3Y+15*box))
+      if ((foodX>=maze3X) &&(foodX<=maze3X+15*box)&&(foodY>=maze3Y) &&(foodY<=maze3Y+5*box))
       { 
         createFood();
       }
       if ((foodX>=maze4X) &&(foodX<=maze4X+5*box)&&(foodY>=maze4Y) &&(foodY<=maze4Y+5*box))
+      { 
+        createFood();
+      }
+      if ((foodX>=maze5X) &&(foodX<=maze5X+5*box)&&(foodY>=maze5Y) &&(foodY<=maze5Y+5*box))
+      { 
+        createFood();
+      }
+      if ((foodX>=maze6X) &&(foodX<=maze6X+5*box)&&(foodY>=maze6Y) &&(foodY<=maze6Y+5*box))
       { 
         createFood();
       }

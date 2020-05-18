@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html id="html">
   <head>
-  	<title>Snake Game</title>
+  	<title>Snake Game(P.S:Just as a snake sheds its skin,we must shed our past over and over again.....)</title>
     <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
     <!--<script src="https://kit.fontawesome.com/yourcode.js"></script>-->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet"  href="snake1.css">
+    <link rel="shortcut icon" type="image/jpg" href="img/snake2.png">
+
   </head>
   <body onload="checkCookie()" id="body">
     
@@ -49,7 +51,16 @@
            <span></span>
            <span><small><small><small><i class="fas fa-gamepad"><br><small>Maze2<br><small><small>Lvl:3</small></small></small></i></small></small></small></span>       </a>
           </a>         
-    </li> 
+    </li>
+    <li>
+      <a href="snake4.html">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+         <span><small><small><small><i class="fas fa-gamepad"><br><small><small><small>Fixed Maze</small></small><br><small><small>Lvl:4</small></small></small></i></small></small></small></span>       </a>
+        </a>         
+  </li>  
   </ul>
    
   <img class="si" src="img/snakehead.gif" alt="">
@@ -104,9 +115,8 @@
             
             <h4 class="fs" style="color: aliceblue;">FULLSCREEN:<button onclick="openFullscreen();" style="background-color: burlywood;"><span style="color: white;"> <small> OPEN </small></span></button><button onclick="closeFullscreen();" style="background-color: cyan;"><span style="color: white;"><small> CLOSE </small></span></button></h4>
             
-            <video id="video1" height="0"  width="0" autoplay loop muted>
-              <source src="video/v0.mp4" type='video/mp4'>
-             </video>
+            <button class="myi" onclick="myInstructions()">Instructions🧐/Help🙂</button>
+
 
   </body>
   
