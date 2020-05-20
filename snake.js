@@ -110,7 +110,7 @@ bgn1.src="audio/bgn1.mp3";
 
 
     // The user's score
-    let score = 0;
+    let score =0;
     // When set to true the snake is changing direction
     let changingDirection = false;
     // Food x-coordinate
@@ -126,9 +126,9 @@ bgn1.src="audio/bgn1.mp3";
       
     var mIc=0;
     function myInstructions() {
-      var myWindow = window.open("", "", "width=400,height=400");
-      myWindow.document.write("<p>A new window!</p>");
-      myWindow.focus();
+     /* var myWindow = */window.open("http://127.0.0.1:5501/help.html","","width=400,height=700");
+     /* myWindow.document.write("<p>A new window!</p>");
+      myWindow.focus();*/
       GAME_SPEED=90000000;
       c0=0;
     }
@@ -162,7 +162,7 @@ bgn1.src="audio/bgn1.mp3";
       var user=getCookie("username");
       username=getCookie("username");
       if (user != "") {
-        alert("Welcome again " + user +  "!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: "+user+", to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
+        alert("Welcome again " + username +  "!😎  Yo!\nStart your 🐍 game😀?\n\n\nP.S: "+user+", to enjoy the GAMEPLAY to the fullest,please gothrough the instructions(leftmost) carefully especially if you are playing this GAME/LEVEL for the FIRST TIME.\nThankyou🙂!");
         main();
       }
       
@@ -179,7 +179,7 @@ bgn1.src="audio/bgn1.mp3";
          }
       }
     }
-
+    username=getCookie("username");
     //var person = prompt("Please enter your name", "Harry Potter");
 
 
@@ -370,23 +370,23 @@ window.addEventListener('load', function(){
     const goingRight0 = dx === box;
     const goingLeft0 = dx === -box;
       
-      if ((dir=='up') && !goingDown0&& !goingUp0) {
+      if ((dir=='up') && !goingDown0 && !goingUp0) {
         up.play();
         dx = 0;
         dy = -box;
       }
 
-      if ((dir=='left') && !goingRight0&& !goingLeft0) {
+      if ((dir=='left') && !goingRight0 && !goingLeft0) {
         left.play();
         dx = -box;
         dy = 0;
       }
-      if ((dir=='right') && !goingLeft0&& !goingRight0) {
+      if ((dir=='right') && !goingLeft0 && !goingRight0) {
         right.play();
         dx = box;
         dy = 0;
       }
-      if ((dir=='down') && !goingUp0&& !goingDown0) {
+      if ((dir=='down') && !goingUp0 && !goingDown0) {
         down.play();
         dx = 0;
         dy = box;
@@ -396,6 +396,8 @@ window.addEventListener('load', function(){
 
   })
 }, false)
+
+
 var c11=0;
 var o1 = document.getElementById("demo4");
 var o2 = document.getElementById("demo5");

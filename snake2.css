@@ -24,7 +24,7 @@ body{
    
    
    #gameCanvas {
-       border: 5px solid  rgb(251, 255, 0);
+       border: 5px solid  rgba(251, 255, 0, 0);
        position: fixed;
    top: 59%;
    left: 50%;
@@ -90,7 +90,7 @@ ul{
    left: 10rem;
    position: fixed ;
    display: flex;
-   z-index: 5;
+   z-index: 5000;
   transform-style: preserve-3d;
  
 }

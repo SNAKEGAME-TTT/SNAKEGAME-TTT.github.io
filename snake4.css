@@ -5,7 +5,7 @@ html{
 }
 
 body{
-   background: url(img/bb4.gif);
+   background: url(img/bb5.gif);
    background-size: 667px 367px;
    orientation: landscape;
    align-items: center;
@@ -24,7 +24,7 @@ body{
    
    
    #gameCanvas {
-       border: 5px solid  rgb(251, 255, 0);
+       border: 5px solid  rgb(255, 0, 0);
        position: fixed;
    top: 59%;
    left: 50%;
@@ -90,7 +90,7 @@ ul{
    left: 10rem;
    position: fixed ;
    display: flex;
-   z-index: 5;
+   z-index: 5000;
   transform-style: preserve-3d;
  
 }
@@ -458,13 +458,13 @@ background: rgba(0, 0, 0, 0);
 
  #demo4{
    border: #ff0000;
-   background-color: blueviolet;
+   background-color: rgb(226, 43, 43);
    border-radius: 5%;
    width: 30%;
  }
  #demo5{
    border: #ff0000;
-   background-color: rgb(226, 43, 43);
+   background-color: rgb(110, 226, 43);
    border-radius: 5%;
    width: 30%;
  }

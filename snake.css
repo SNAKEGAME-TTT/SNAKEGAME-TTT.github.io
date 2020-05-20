@@ -24,7 +24,7 @@ body{
     
     
     #gameCanvas {
-        border: 5px solid  rgb(251, 255, 0);
+        border: 5px solid  rgba(251, 255, 0, 0);
         position: fixed;
     top: 59%;
     left: 50%;
@@ -71,10 +71,10 @@ body{
        color: #fff;
        right: 0rem;
        font-size: 30px;
-       z-index: 3;
+       z-index: 300;
  }
   #score {
-      z-index: 3;
+      z-index: 300;
       position: fixed;
     color: #fff;
     top: 3.5rem;
@@ -86,11 +86,11 @@ body{
 
 
 ul{
-    top: 0.9rem;
+    top: 1rem;
     left: 10rem;
     position: fixed ;
     display: flex;
-    z-index: 5;
+    z-index: 5000;
    transform-style: preserve-3d;
   
 }
@@ -229,14 +229,14 @@ background: rgba(0, 0, 0, 0);
     position: fixed;
     right: 0rem;
     width: 140px;
-    z-index: 0;
+    z-index:290;
 }
 
 .si1{
     position: fixed;
     left: 0rem;
     width: 140px;
-    z-index: 0;
+    z-index:290;
 }
 
 .sco{
@@ -442,8 +442,9 @@ background: rgba(0, 0, 0, 0);
     left: 60%;
     z-index: 2000;
   }
+  
   .fs{
-    top: 9rem;
+    top: 9.2rem;
     position: fixed;
     right: 0%;
     z-index: 2000;
