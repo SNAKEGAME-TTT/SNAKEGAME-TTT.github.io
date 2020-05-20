@@ -758,14 +758,17 @@ var o1 = document.getElementById("demo4");
 var o2 = document.getElementById("demo5");
 function myFunction1(){
       bch=1;
-      
+    /*  document.getElementById("gameCanvas").style.borderBlockStartColor="red";
+      document.getElementById("gameCanvas").style.borderBlockEndColor="red";
+      document.getElementById("gameCanvas").style.borderBlockEndStyle="yellow";*/
  o1.innerHTML = "Active ✔";
  o2.innerHTML = "Inactive";
 
 }
 function myFunction2(){
   bch=0;
-  
+ 
+
   o1.innerHTML = "Active";
   o2.innerHTML = "Inactive✔";
   
@@ -1038,6 +1041,8 @@ if(bhitBottomWall&&goingDown1)
        
         document.getElementById("demo4").onclick = function() {myFunction1()};
         document.getElementById("demo5").onclick = function() {myFunction2()};
+        if(bch==0)  document.getElementById("gameCanvas").style.borderColor="rgba(255, 0, 0, 0)";
+        if(bch==1)  document.getElementById("gameCanvas").style.borderColor="red";
         gs=GAME_SPEED;
         document.getElementById("demo6").onclick = function() {main4()};
         document.getElementById("demo7").onclick = function() {main5()};
