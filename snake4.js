@@ -145,9 +145,7 @@ bgn1.src="audio/bgn1.mp3";
 
     var mIc=0;
     function myInstructions() {
-      var myWindow = window.open("", "", "width=400,height=400");
-      myWindow.document.write("<p>A new window!</p>");
-      myWindow.focus();
+      window.open("help.html","","width=400,height=700");
       GAME_SPEED=90000000;
       c0=0;
     }
@@ -762,14 +760,14 @@ function myFunction1(){
       bch=1;
       
  o1.innerHTML = "Active ✔";
- o2.innerHTML = "Deactive";
+ o2.innerHTML = "Inactive";
 
 }
 function myFunction2(){
   bch=0;
   
   o1.innerHTML = "Active";
-  o2.innerHTML = "Deactive✔";
+  o2.innerHTML = "Inactive✔";
   
 }
 

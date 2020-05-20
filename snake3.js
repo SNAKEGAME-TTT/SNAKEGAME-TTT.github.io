@@ -141,9 +141,7 @@ bgn1.src="audio/bgn1.mp3";
 
     var mIc=0;
     function myInstructions() {
-      var myWindow = window.open("", "", "width=400,height=400");
-      myWindow.document.write("<p>A new window!</p>");
-      myWindow.focus();
+      window.open("help.html","","width=400,height=700");
       GAME_SPEED=90000000;
       c0=0;
     }
@@ -186,7 +184,7 @@ bgn1.src="audio/bgn1.mp3";
    
     mazeX = random1(gameCanvas.width/2,gameCanvas.width-5*box);
     
-    mazeY = random1(box,gameCanvas.height/2 - 5*box);
+    mazeY = random1(3*box,gameCanvas.height/2 - 5*box);
     
   }
   function createMaze1() {
@@ -207,7 +205,7 @@ bgn1.src="audio/bgn1.mp3";
    
     maze3X = random1(gameCanvas.width/4 - 5*box,2*gameCanvas.width/4-5*box);
     
-    maze3Y = random1(box,2*gameCanvas.height/4-5*box);
+    maze3Y = random1(3*box,2*gameCanvas.height/4-5*box);
     
   }
   function createMaze4() {

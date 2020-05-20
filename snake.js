@@ -126,9 +126,9 @@ bgn1.src="audio/bgn1.mp3";
       
     var mIc=0;
     function myInstructions() {
-     /* var myWindow = */window.open("http://127.0.0.1:5501/help.html","","width=400,height=700");
-     /* myWindow.document.write("<p>A new window!</p>");
-      myWindow.focus();*/
+     window.open("help.html","","width=400,height=700");
+     
+     
       GAME_SPEED=90000000;
       c0=0;
     }
@@ -742,7 +742,7 @@ function myFunction(){
           else if(score>130)
           ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
           else
-          ctx.drawImage(canb1, 0, 0,gameCanvas.width,gameCanvas.height);
+          ctx.drawImage(ground, 0, 0,gameCanvas.width,gameCanvas.height);
   
 
 

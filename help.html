@@ -11,16 +11,20 @@
   html{
     scroll-behavior: smooth;
     cursor: url(http://ani.cursors-4u.net/cursors/cur-13/cur1161.ani), url(http://ani.cursors-4u.net/cursors/cur-13/cur1161.png), auto !important;
-
+   background-color: rgba(0, 0, 0, 0.11);
+   
+   
   }
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 .w3-sidebar {
   z-index: 3;
   width: 250px;
-  top: 43px;
+  top: 53px;
   bottom: 0;
   height: inherit;
   scroll-behavior: smooth;
+  
+
 }
 </style>
 <body onload="checkCookie()" id="body">
@@ -32,7 +36,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 <div class="w3-top">
   <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-   <a href="#" class="w3-bar-item w3-button w3-theme-l1"><img src="img/snake2.png" alt="" width="32">SNAKE GAME</a>
+   <a style="cursor: default;" class="w3-bar-item w3-button w3-theme-l1" ><img src="img/snake2.png" alt="" width="32">SNAKE GAME</a>
      <!--<a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">GAMEPLAY</a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">GAME CONTROLS</a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">CONTROLLERS</a>
@@ -43,75 +47,90 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 
 <!-- Sidebar -->
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
-    <i class="fa fa-remove"></i>
+  <a href="javascript:void(0)" style="z-index: 101;" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+  <span style="z-index: 110;">   <i class="fa fa-remove" ></i></span>
   </a>
   <h4 class="w3-bar-item"><b>SECTIONS</b></h4>
   <a class="w3-bar-item w3-button w3-hover-black" href="#G">GAMEPLAY</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#GC">GAME CONTROLS</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#C">CONTROLLERS</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#AG">AUTOMATED GAMEPLAY</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#BW"><b> Boundary Walls</b></a>
 
   <h4 class="w3-bar-item"><b>Levels</b></h4>
-  <a class="w3-bar-item w3-button w3-hover-black" href="index.html" target="_blank">Level 0</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="snake1.html" target="_blank">Level 1</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="snake2.html" target="_blank">Level 2</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="snake3.html" target="_blank">Level 3</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="snake4.html" target="_blank">Level 4</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="index.html" target="_blank">Level 0 <small><small>(Unbounded)</small></small></a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="snake1.html" target="_blank">Level 1 <small><small>(Bounded)</small></small></a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="snake2.html" target="_blank">Level 2 <small><small>(Random Maze,Unbounded)</small></small> </a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="snake3.html" target="_blank">Level 3 <small><small>(Random Maze,Bounded)</small></small></a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="snake4.html" target="_blank">Level 4 <small><small><small>(FIXED Maze,Unbounded/bounded)</small></small></small></a>
 
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-overlay w3-hide-large"  onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
 <div class="w3-main" style="margin-left:250px">
 
+  <div class="w3-third w3-container">
+    <p style="position: fixed;left: 175px; top: -9px;z-index: 1;"><img src="img/snakehead1.gif" alt="" width="100" height="100"></p>
+  </div>
+
   <div class="w3-row w3-padding-64">
     <div class="w3-twothird w3-container">
+      <hr>
       <h1><span class="w3-text" id="header1" style="color: yellow;background-color: rgba(0, 45, 248, 0.308);">Hello AMIGO!😎</span></h1>
   
-      <p>. . .  <br>Here we go with the Instructions or Help Guide</p>
+      <p>. . .  <br>Here we go with the Instructions/Help Guide</p>
     </div>
-    <div class="w3-third w3-container">
+    
+  </div>
 
-      <p class=" w3-center"><span><small>GAME BACKGROUNDS... <br></small></span> <img src="img/bgs.gif" alt="" width="100" height="100"><img src="img/bb2.gif" alt="" width="100" height="100"><img src="img/bb3.gif" alt="" width="100" height="100"><img src="img/bb4.gif" alt="" width="100" height="100"><img src="img/bb5.gif" alt="" width="100" height="100"></p>
+ <div  id="G" data-text="GAMEPLAY">
+  <div class="w3-row" >
+    <div class="w3-twothird w3-container" ><hr>
+      <h1 class="w3-text" style="color: rgb(255, 255, 255); background-color: rgb(128, 145, 240);" >GAMEPLAY</h1>
+      <p><b>▶/⏸</b>:It is advisable to pause the game whenever game contorllers(like speed,snake size,game width and height) are operated or feel like taking a small break during the gameplay </p>  
+      
+      <p><b>📶🔀to SWITCH b/w LEVELS:</b>  One can switch b/w levels at one's convenience at any part of the game </p>  
+      
+      <p><br><br><b>💯SCORE DISPLAY</b>:Gets updated/increased as soon as the snake takes the food as follows: <br>🟢level 0/level 1:score increases by <b>1</b> <br>🟡level 3:score increases by <b>2</b><br>🟠level 4:score increases by <b>3</b><br>🔴level 5:Boundary walls :<br>&emsp;&emsp;&emsp;&emsp;Activated: Score increases by <b>3</b><br>&emsp;&emsp;&emsp;&emsp;Dectivated: Score increases by <b>2</b></p>  
 
+      
+      <p><br><br><b>🟥FullScreen</b>:Enhances your gaming experience.</p>  
+    </div>
+      <div class="w3-third w3-container"><br><br><br><br><br>
+
+        <p class=" w3-center"><img src="img/gpp.jpg" alt="" width="210" height="50"></p><br>
+        <p class=" w3-center"><img src="img/gul.jpg" alt="" width="210" height="50"></p>
+        <p class=" w3-center"><img src="img/gsn.jpg" alt="" width="100" height="100"></p><br><br><br>
+        <p class=" w3-center"><img src="img/gfs.jpg" alt="" width="210" height="50"></p>
+
+      </div>
+   
     </div>
   </div>
 
-  <div class="w3-row">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text" style="color: orange;">GAMEPLAY</h1>
-      <p></p>  
+  <div id="GC" data-text="GAME CONTROLS">
+  <div class="w3-row"><hr>
+    <div class="w3-twothird w3-container" >
+      <h1 class="w3-text" style="color: rgb(98, 0, 255);background-color: rgb(143, 220, 20);"> GAME CONTROLS</h1>
+      <p>To control the DIRECTION(movement) of the Snake in the Game:-</p>
+      <p><b>Using Keyboard: <br><b>⏫(UP) &emsp;&nbsp;&nbsp;:</b></b>W or ⬆ keys<br><b>⏬(Down)&nbsp; : </b></b>S or ⬇ keys<br><b>⏩(RIGHT)&nbsp;: </b></b>D or ➡keys<br><b>⏪(LEFT) &nbsp; : </b></b>A or ⬅ keys</p>
+      <p><b>On Touch Enabled Devices:</b>SWIPE on the screen <br><br><br>&emsp;&emsp;&emsp; (Go through the images)</p>
     </div>
-    <div class="w3-third w3-container">
-      <p class=" w3-center"><img src="img/gpp.jpg" alt="" width="210" height="50"></p>
-      <p class=" w3-center"><img src="img/gul.jpg" alt="" width="210" height="50"></p>
-      <p class=" w3-center"><img src="img/gsn.jpg" alt="" width="100" height="100"></p>
-      <p class=" w3-center"><img src="img/gfs.jpg" alt="" width="210" height="50"></p>
-    
-    
-    </div>
-  </div>
-
-  <div class="w3-row">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text" style="color: orange;">GAME CONTROLS</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
-        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div class="w3-third w3-container">
+    <div class="w3-third w3-container"><br><br>
       <p class=" w3-center"><img src="img/sgsh.jpg" alt="" width="210" height="210"></p>
       <p class="w3-center"><img src="img/sgsv.jpg" alt="" width="210" height="210"></p>
     </div>
   </div>
+</div>
 
-  <div class="w3-row w3-padding-64">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal">CONTROLLERS</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
-        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<div id="C" data-text="CONTROLLERS">
+  <div class="w3-row w3-padding-64"><hr>
+    <div class="w3-twothird w3-container" >
+      <h1 class="w3-text" style="color: rgb(236, 253, 0); background-color: cyan;" > CONTROLLERS</h1>
+      <p><b>⏭/⏮Game/Snake Speed Controller: </b>As the name indicates,used to control the speed with which the snake moves. <br><br><b>🐍🔛<big><big><big>🐍</big></big></big>Snake Size Controller:</b>Along with the size of the snake,FOOD size also increases. <br> <small><b>Note</b> :This controller gets <u>disabled</u> automatically in the <u> computerized gameplay</u></small> <br><br><br><b>⬜◻◽▫▪◾◼⬛: <br>Game Height and Width Controllers:</b>Increases or decreases the the game/canvas area in the will of the user.   <br><br><br><b>Note: <br></b><b>1.</b>Snake Size, Game Width and Height controllers are available only in LEVEL 0 and LEVEL 1 <br><b>2.</b>Remember to <b>pause</b> the game while using the above controllers</p>
     </div>
     <div class="w3-third w3-container">
       <p class=" w3-center"><img src="img/ccsp.jpg" alt="" width="210" height="90"></p>
@@ -120,19 +139,37 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
       <p class=" w3-center"><img src="img/ccgh.jpg" alt="" width="210" height="90"></p>
     </div>
   </div>
-  <div class="w3-row w3-padding-64">
+  </div>
+ 
+  <div id="AG" data-text="AUTOMATED GAMEPLAY">
+  <div class="w3-row w3-padding-64"> <hr>
     <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal">AUTOMATED/<br> COMPUTERIZED GAMEPLAY</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
-        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h1 class="w3-text" style="color: rgb(255, 230, 0);background-color: darkcyan;" >COMPUTERIZED GAMEPLAY</h1>
+      <p>Helps the gamer in achieving HIGH SCORES faster at any point of time in the GAME. <br>(Can be switched b/w ON and OFF) <br> <br><b><small><b>Note:</b></small></b> <small> This is available only in LEVEL 0 and LEVEL 1</small></p>
     </div>
     <div class="w3-third w3-container">
       <p class=" w3-center"><img src="img/agpp.jpg" alt="" width="310" height="50"></p>
     </div>
   </div>
+</div>
+
+<div id="BW" data-text="Boundary Walls">
+  <div class="w3-row w3-padding-64"><hr>
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text" style="background-color: rgb(255, 0, 0); color: rgb(255, 255, 255);" ><b> Boundary Walls</b></h1>
+    </div>
+  
+    <p>ACTIVE(Bounded):Level 1 and Level 3</p>
+    <p>INACTIVE(Unbounded):Level 0 and Level 2</p>
+    <p><b>In LEVEL 4:</b>It is at the will of the player whether to activate or deactivate the border walls</p>
+    <div class="w3-third w3-container">
+      <p class=" w3-center"><img src="img/cbw.jpg" alt="" width="310" height="50"></p>
+    </div>
+  </div>
+</div>
   <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
-    <h6 class="w3-text" style="color: rgb(0, 140, 255);">INSTRUCTIONS FOR DIFFERENT LEVELS</h6>
+ <!-- <div class="w3-center w3-padding-32">
+    <h6 class="w3-text" style="color: rgb(0, 140, 255);"><hr><hr> INSTRUCTIONS FOR DIFFERENT LEVELS</h6>
     <div class="w3-bar">
       <a class="w3-button w3-black" href="help.html">0</a>
       <a class="w3-button w3-hover-black" href="help1.html">1</a>
@@ -140,8 +177,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
       <a class="w3-button w3-hover-black" href="help3.html">3</a>
       <a class="w3-button w3-hover-black" href="help4.html">4</a>
     </div>
-  </div>
-
+  </div>-->
+  <hr>
+  <p style="text-align: center;">&emsp;<span ><small>GAME BACKGROUNDS...<br></small></span>&emsp; <img src="img/bgs.gif" alt="" width="100" height="100"><img src="img/bb2.gif" alt="" width="100" height="100"><img src="img/bb3.gif" alt="" width="100" height="100"><img src="img/bb4.gif" alt="" width="100" height="100"><img src="img/bb5.gif" alt="" width="100" height="100"></p>
   <footer id="myFooter">
     <div class="w3-container w3-theme-l2 w3-padding-32">
       <h4 class="w3-center">PLAY AS YOU WISH!😎</h4>
