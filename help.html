@@ -55,7 +55,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   <a class="w3-bar-item w3-button w3-hover-black" href="#GC">GAME CONTROLS</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#C">CONTROLLERS</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#AG">AUTOMATED GAMEPLAY</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#BW"><b> Boundary Walls</b></a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#M">MAZE</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#BW">Boundary Walls</a>
 
   <h4 class="w3-bar-item"><b>Levels</b></h4>
   <a class="w3-bar-item w3-button w3-hover-black" href="index.html" target="_blank">Level 0 <small><small>(Unbounded)</small></small></a>
@@ -97,7 +98,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
       <p><br><br><b>💯SCORE DISPLAY</b>:Gets updated/increased as soon as the snake takes the food as follows: <br>🟢level 0/level 1:score increases by <b>1</b> <br>🟡level 3:score increases by <b>2</b><br>🟠level 4:score increases by <b>3</b><br>🔴level 5:Boundary walls :<br>&emsp;&emsp;&emsp;&emsp;Activated: Score increases by <b>3</b><br>&emsp;&emsp;&emsp;&emsp;Dectivated: Score increases by <b>2</b></p>  
 
       
-      <p><br><br><b>🟥FullScreen</b>:Enhances your gaming experience.</p>  
+      <p><br><br><b>🟥FullScreen</b>:Enhances your gaming experience.(Enabled only for devices with screen width > 1000px)</p>  
     </div>
       <div class="w3-third w3-container"><br><br><br><br><br>
 
@@ -154,12 +155,31 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   </div>
 </div>
 
+<div id="M" data-text="MAZE">
+  <div class="w3-row w3-padding-64"><hr>
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text" style="background-color: rgb(255, 153, 0); color: rgb(255, 255, 255);" ><b>MAZE</b></h1>
+      <p><b>Random orientation of MAZE:</b>Available in LEVEL 2 and LEVEL 3.Maze orientation and positioning changes everytime these levels in the game are opened</p>
+      <p><b>FIXED Maze:</b>Available in LEVEL 4.Maze orientation and position is fixed and remains unchanged even after restarting the level.</p>
+    </div>
+  
+   
+    <div class="w3-third w3-container">
+      <p class=" w3-center"><img src="img/ram1.jpg" alt="" width="110" height="150"> <img src="img/ram11.jpg" alt="" width="110" height="150"></p>
+     
+
+      <p class=" w3-center"><img src="img/ram2.jpg" alt="" width="110" height="150"> <img src="img/ram22.jpg" alt="" width="110" height="150"></p>
+      <p class=" w3-center"><img src="img/fim.jpg" alt="" width="210" height="150"></p>
+    </div>
+  </div>
+</div>
+
 <div id="BW" data-text="Boundary Walls">
   <div class="w3-row w3-padding-64"><hr>
     <div class="w3-twothird w3-container">
       <h1 class="w3-text" style="background-color: rgb(255, 0, 0); color: rgb(255, 255, 255);" ><b> Boundary Walls</b></h1>
-      <p>ACTIVE(Bounded):Level 1 and Level 3</p>
-      <p>INACTIVE(Unbounded):Level 0 and Level 2</p>
+      <p><b>ACTIVE</b> (Bounded):Level 1 and Level 3</p>
+      <p><b>INACTIVE</b> (Unbounded):Level 0 and Level 2</p>
       <p><b>In LEVEL 4:</b>It is at the will of the player whether to activate or deactivate the border walls</p>
     </div>
   
